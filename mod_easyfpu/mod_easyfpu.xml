@@ -22,9 +22,21 @@
 	</files>
 	<scriptfile>script.php</scriptfile>
 	
+	<!--
 	<config>
 	   <fields name="params">
 			<fieldset name="basic">
+			    <field
+					name="eventlist_template"
+					type="list"
+					required="true"
+					label="MOD_EVENTLIST_FIELD_TEMPLATE"
+					default="international"
+					description="MOD_EVENTLIST_FIELD_TEMPLATE_DESC">
+					<option value="international">MOD_EVENTLIST_FIELD_TEMPLATE_INT</option>
+					<option value="de">MOD_EVENTLIST_FIELD_TEMPLATE_DE</option>
+					<option value="default">MOD_EVENTLIST_FIELD_TEMPLATE_FREE</option>
+				</field>
 				<field
 					name="eventlist_showdespitenotpublished"
 					type="radio"
@@ -51,17 +63,6 @@
 					default="0">
 					<option value="0">MOD_EVENTLIST_FIELD_WEEKSTARTS_SUNDAY</option>
 					<option value="1">MOD_EVENTLIST_FIELD_WEEKSTARTS_MONDAY</option>
-				</field>
-				<field
-					name="eventlist_template"
-					type="list"
-					required="true"
-					label="MOD_EVENTLIST_FIELD_TEMPLATE"
-					default="international"
-					description="MOD_EVENTLIST_FIELD_TEMPLATE_DESC">
-					<option value="international">MOD_EVENTLIST_FIELD_TEMPLATE_INT</option>
-					<option value="de">MOD_EVENTLIST_FIELD_TEMPLATE_DE</option>
-					<option value="default">MOD_EVENTLIST_FIELD_TEMPLATE_FREE</option>
 				</field>
 				<field
 					name="eventlist_timeseparator"
@@ -106,6 +107,7 @@
 			</fieldset>
 		</fields>
 	</config>
+	-->
 
 	<languages folder="language">
 		<language tag="en-GB">en-GB/en-GB.mod_easyfpu.ini</language>

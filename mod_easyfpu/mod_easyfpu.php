@@ -1,9 +1,9 @@
 <?php
 /**
  * @package     Joomla.Site
- * @subpackage  mod_eventlist
+ * @subpackage  mod_easyfpu
  *
- * @copyright   Copyright (C) 2018-2019 Ulrich Rueth, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2019 Ulrich Rueth, Inc. All rights reserved.
  * @license     GNU General Public License version 3 or later
  */
 
@@ -11,13 +11,13 @@
 defined('_JEXEC') or die;
 
 // Include the eventlist functions only once
-JLoader::register('ModEventlistHelper', __DIR__ . '/helper.php');
-include __DIR__ . '/helper.php';
+JLoader::register('ModEasyFPUHelper', __DIR__ . '/helper.php');
+//include __DIR__ . '/helper.php';
 
-// Get mod_eventlist parameters
-$module = JModuleHelper::getModule('mod_eventlist');
+// Get mod_easyfpu parameters
+$module = JModuleHelper::getModule('mod_easyfpu');
 $params = new JRegistry($module->params);
 
-$eventList = ModEventListHelper::getList($params);
+$eventList = ModEasyFPUHelper::getList($params);
 	
-require JModuleHelper::getLayoutPath('mod_eventlist', $params['eventlist_template']);
+require JModuleHelper::getLayoutPath('mod_easyfpu', 'default');

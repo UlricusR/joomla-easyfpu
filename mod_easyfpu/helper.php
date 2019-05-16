@@ -1,9 +1,9 @@
 <?php
 /**
  * @package     Joomla.Site
- * @subpackage  mod_eventlist
+ * @subpackage  mod_easyfpu
  *
- * @copyright   Copyright (C) 2018-2019 Ulrich Rueth, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2019 Ulrich Rueth, Inc. All rights reserved.
  * @license     GNU General Public License version 3 or later
  */
 
@@ -11,22 +11,23 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 
-class ModEventListHelper
+class ModEasyFPUHelper
 {
 	/**
-	 * Get a list of the articles of a certain day sorted by starting time,
-	 * articles w/o starting time first.
+	 * Get the food list sorted by name
 	 *
 	 * @param   \Joomla\Registry\Registry  &$params  The module options.
 	 *
 	 * @return  array
 	 *
-	 * @since   3.8
+	 * @since   3.9
 	 */
 	 public static function getList($params)
 	 {
 	 	// Get the database object
 		$db = Factory::getDbo();
+		
+		// TODO rewrite from here
 
 		//
 		// Step 1: Get all relevant article IDs sorted by (1) day and (2) starttime

@@ -1,9 +1,9 @@
 <?php
 /**
  * @package     Joomla.Site
- * @subpackage  mod_eventlist
+ * @subpackage  mod_easyfpu
  *
- * @copyright   Copyright (C) 2018-2019 Ulrich Rueth, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2019 Ulrich Rueth, Inc. All rights reserved.
  * @license     GNU General Public License version 3 or later
  */
 
@@ -11,10 +11,10 @@
 defined('_JEXEC') or die;
 
 /**
- * Script file of EventList module
+ * Script file of EasyFPU module
  */
  
-class mod_eventListInstallerScript
+class mod_easyFPUInstallerScript
 {
 	/**
 	 * Method to install the extension
@@ -58,14 +58,7 @@ class mod_eventListInstallerScript
 	 */
 	function preflight($type, $parent) 
 	{
-		//echo '<p>Anything here happens before the installation/update/uninstallation of the module</p>';
-		if (!JPluginHelper::getPlugin('content', 'eventlist')) {
-			// Get a handle to the Joomla! application object
-			$application = JFactory::getApplication();
-
-			// Add a message to the message queue
-			$application->enqueueMessage(JText::_('ERR_PLUGIN_NOT_FOUND'), 'warning');
-		}
+		echo '<p>Anything here happens before the installation/update/uninstallation of the module</p>';
 	}
 
 	/**
@@ -77,6 +70,6 @@ class mod_eventListInstallerScript
 	 */
 	function postflight($type, $parent) 
 	{
-		//echo '<p>Anything here happens after the installation/update/uninstallation of the module</p>';
+		echo '<p>Anything here happens after the installation/update/uninstallation of the module</p>';
 	}
 }
