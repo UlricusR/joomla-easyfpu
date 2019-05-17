@@ -2,4 +2,4 @@
 .buildpath
 .project
 .settings
-mod_easyfpu/.DS_Store
+*/.DS_Store
