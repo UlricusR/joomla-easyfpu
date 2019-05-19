@@ -9,5 +9,18 @@
 
 // No direct access
 defined('_JEXEC') or die;
-?>
-<h1><?php echo $this->msg; ?></h1>
+
+/**
+ * Form Rule class for the Joomla Framework.
+ */
+class JFormRuleGreeting extends JFormRule
+{
+    /**
+     * The regular expression.
+     *
+     * @access	protected
+     * @var		string
+     * @since	2.5
+     */
+    protected $regex = '^[^0-9]+$';
+}

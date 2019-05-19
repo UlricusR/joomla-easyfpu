@@ -5,7 +5,7 @@ use Joomla\CMS\Factory;
  * @package     Joomla.Administrator
  * @subpackage  com_easyfpu
  *
- * @copyright   Copyright (C) 2019 Ulrich Rueth, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2019 Ulrich Rueth. All rights reserved.
  * @license     GNU General Public License version 3 or later
  */
 
@@ -35,15 +35,19 @@ class JFormFieldEasyFPU extends JFormFieldList {
     protected function getOptions() {
         $db = Factory::getDbo();
         $query = $db->getQuery(true);
-        $query->select('id,greeting');
+        $query->select('#__easyfpu.id as id,greeting,#__categories.title as category,catid');
         $query->from('#__easyfpu');
+        $query->leftJoin('#__categories on catid=#__categories.id');
+        // Retrieve only published items
+        $query->where('#__easyfpu.published = 1');
         $db->setQuery((string) $query);
         $messages = $db->loadObjectList();
         $options = array();
         
         if ($messages) {
             foreach ($messages as $message) {
-                $options[] = JHtml::_('select.option', $message->id, $message->greeting);
+                $options[] = JHtml::_('select.option', $message->id, $message->greeting .
+                    ($message->catid ? ' (' . $message->category . ')' : ''));
             }
         }
         

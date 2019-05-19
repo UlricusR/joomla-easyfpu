@@ -4,6 +4,7 @@ CREATE TABLE `#__easyfpu` (
 	`id`       INT(11)     NOT NULL AUTO_INCREMENT,
 	`greeting` VARCHAR(25) NOT NULL,
 	`published` tinyint(4) NOT NULL DEFAULT '1',
+	`catid` 	int(11)	   NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
 )
 	ENGINE =InnoDB

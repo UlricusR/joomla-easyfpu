@@ -9,5 +9,14 @@
 
 // No direct access
 defined('_JEXEC') or die;
-?>
-<h1><?php echo $this->msg; ?></h1>
+
+/**
+ * EasyFPU controller
+ * 
+ * @package Joomla.Administrator
+ * @subpackage com_easyfpu
+ * @since 0.0.9
+ */
+class EasyFPUControllerEasyFPU extends JControllerForm {
+
+}
