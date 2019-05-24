@@ -34,6 +34,8 @@ class EasyFPUModelEasyFPUs extends JModelList {
             $config['filter_fields'] = array(
                 'id',
                 'greeting',
+                'author',
+                'created',
                 'published'
             );
         }
@@ -52,12 +54,16 @@ class EasyFPUModelEasyFPUs extends JModelList {
         $query = $db->getQuery(true);
         
         // Create the base select statement
-        $query->select('a.id as id, a.greeting as greeting, a.published as published')
+        $query->select('a.id as id, a.greeting as greeting, a.published as published, a.created as created')
             ->from($db->quoteName('#__easyfpu', 'a'));
         
         // Join over categories
         $query->select($db->quoteName('c.title', 'category_title'))
               ->join('LEFT', $db->quoteName('#__categories', 'c') . ' ON c.id = a.catid');
+        
+        // Join with users table to get the username of the author
+        $query->select($db->quoteName('u.username', 'author'))
+              ->join('LEFT', $db->quoteName('#__users', 'u') . ' ON u.id = a.created_by');
         
         // Filter: like / search
         $search = $this->getState('filter.search');
