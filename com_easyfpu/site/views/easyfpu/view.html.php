@@ -24,9 +24,9 @@ class EasyFPUViewEasyFPU extends JViewLegacy {
      * @return  void
      */
     function display($tpl = null) {
-        // Assign data to the view; the get method coverts the get('Msg') call into a getMsg() call on the model,
-        // therefore in the model class we need to provide a getMsg() method.
-        $this->msg = $this->get('Msg');
+        // Assign data to the view; the get method coverts the get('Item') call into a getItem() call on the model,
+        // therefore in the model class we need to provide a getItem() method.
+        $this->item = $this->get('Item');
         
         // Check for errors
         if (count($errors = $this->get('Errors'))) {

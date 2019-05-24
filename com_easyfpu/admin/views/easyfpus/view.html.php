@@ -40,10 +40,12 @@ class EasyFPUViewEasyFPUs extends JViewLegacy {
         $this->filterForm    	= $this->get('FilterForm');
         $this->activeFilters 	= $this->get('ActiveFilters');
         
+        // What Access Permissions does this user have? What can (s)he do?
+        $this->canDo = JHelperContent::getActions('com_easyfpu');
+        
         // Check for errors
         if (count($errors = $this->get('Errors'))) {
-            throw new ErrorException(implode('<br/>', $errors), 500);
-            return false;
+            throw new Exception(implode("\n", $errors), 500);
         }
         
         // Set the submenu
@@ -75,9 +77,23 @@ class EasyFPUViewEasyFPUs extends JViewLegacy {
         }
         
         JToolbarHelper::title($title);
-        JToolbarHelper::deleteList('', 'easyfpus.delete');
-        JToolbarHelper::addNew('easyfpu.add');
-        JToolbarHelper::editList('easyfpu.edit');
+        
+        if ($this->canDo->get('core.create')) {
+            JToolbarHelper::addNew('easyfpu.add', 'JTOOLBAR_NEW');
+        }
+        
+        if ($this->canDo->get('core.edit')) {
+            JToolbarHelper::editList('easyfpu.edit', 'JTOOLBAR_EDIT');
+        }
+        
+        if ($this->canDo->get('core.delete')) {
+            JToolbarHelper::deleteList('', 'easyfpus.delete', 'JTOOLBAR_DELETE');
+        }
+        
+        if ($this->canDo->get('core.admin')) {
+            JToolBarHelper::divider();
+            JToolbarHelper::preferences('com_easyfpu');
+        }
     }
     
     /**

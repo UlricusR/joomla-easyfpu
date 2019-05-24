@@ -20,12 +20,10 @@ use Joomla\CMS\Factory;
  */
 class EasyFPUViewEasyFPU extends JViewLegacy
 {
-    /**
-     * View form
-     *
-     * @var form
-     */
-    protected $form = null;
+    protected $form;
+    protected $item;
+    protected $script;
+    protected $canDo;
     
     /**
      * Display the EasyFPU view
@@ -41,10 +39,12 @@ class EasyFPUViewEasyFPU extends JViewLegacy
         $this->item = $this->get('Item');
         $this->script = $this->get('Script');
         
+        // What Access Permissions does this user have? What can (s)he do?
+        $this->canDo = JHelperContent::getActions('com_easyfpu', 'easyfpu', $this->item->id);
+        
         // Check for errors
         if (count($errors = $this->get('Errors'))) {
-            throw new ErrorException(implode('<br/>', $errors), 500);
-            return false;
+            throw new Exception(implode("\n", $errors), 500);
         }
         
         // Set the toolbar
@@ -74,18 +74,38 @@ class EasyFPUViewEasyFPU extends JViewLegacy
         $isNew = ($this->item->id == 0);
         
         if ($isNew) {
-            $title = JText::_('COM_EASYFPU_MANAGER_EASYFPU_NEW');
+            // For new records, check the create permission.
+            if ($this->canDo->get('core.create'))
+            {
+                JToolBarHelper::apply('easyfpu.apply', 'JTOOLBAR_APPLY');
+                JToolBarHelper::save('easyfpu.save', 'JTOOLBAR_SAVE');
+                JToolBarHelper::custom('easyfpu.save2new', 'save-new.png', 'save-new_f2.png',
+                    'JTOOLBAR_SAVE_AND_NEW', false);
+            }
+            JToolBarHelper::cancel('easyfpu.cancel', 'JTOOLBAR_CANCEL');
         }
         else {
-            $title = JText::_('COM_EASYFPU_MANAGER_EASYFPU_EDIT');
+            if ($this->canDo->get('core.edit'))
+            {
+                // We can save the new record
+                JToolBarHelper::apply('easyfpu.apply', 'JTOOLBAR_APPLY');
+                JToolBarHelper::save('easyfpu.save', 'JTOOLBAR_SAVE');
+                
+                // We can save this record, but check the create permission to see
+                // if we can return to make a new one.
+                if ($this->canDo->get('core.create'))
+                {
+                    JToolBarHelper::custom('easyfpu.save2new', 'save-new.png', 'save-new_f2.png',
+                        'JTOOLBAR_SAVE_AND_NEW', false);
+                }
+            }
+            if ($this->canDo->get('core.create'))
+            {
+                JToolBarHelper::custom('easyfpu.save2copy', 'save-copy.png', 'save-copy_f2.png',
+                    'JTOOLBAR_SAVE_AS_COPY', false);
+            }
+            JToolBarHelper::cancel('easyfpu.cancel', 'JTOOLBAR_CLOSE');
         }
-        
-        JToolbarHelper::title($title, 'easyfpu');
-        JToolbarHelper::save('easyfpu.save');
-        JToolbarHelper::cancel(
-            'easyfpu.cancel',
-            $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE'
-        );
     }
     
     /**

@@ -17,6 +17,11 @@ use Joomla\CMS\Factory;
 $document = Factory::getDocument();
 $document->addStyleDeclaration('.icon-easyfpu {background-image: url(../media/com_easyfpu/images/easyfpu-16x16.png);}');
 
+// Access check: is this user allowed to access the backend of this component?
+if (!Factory::getUser()->authorise('core.manage', 'com_easyfpu')) {
+    throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'));
+}
+
 // Require helper file
 JLoader::register('EasyFPUHelper', JPATH_COMPONENT . '/helpers/easyfpu.php');
 
