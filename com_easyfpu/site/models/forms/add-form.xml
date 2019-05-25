@@ -19,7 +19,7 @@
 			class="inputbox"
 			validate="greeting"
 			required="true"
-               hint="COM_EASYFPU_EASYFPU_GREETING_HINT"
+            hint="COM_EASYFPU_EASYFPU_GREETING_HINT"
 			default=""
 		/>
         <field
