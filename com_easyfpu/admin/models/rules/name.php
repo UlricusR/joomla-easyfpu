@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 /**
  * Form Rule class for the Joomla Framework.
  */
-class JFormRuleGreeting extends JFormRule
+class JFormRuleName extends JFormRule
 {
     /**
      * The regular expression.

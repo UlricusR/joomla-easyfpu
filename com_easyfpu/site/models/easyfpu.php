@@ -71,10 +71,10 @@ class EasyFPUModelEasyFPU extends JModelItem {
 	{
 		if (!isset($this->item)) 
 		{
-			$id    = $this->getState('message.id');
+			$id    = $this->getState('fooditem.id');
 			$db    = Factory::getDbo();
 			$query = $db->getQuery(true);
-			$query->select('h.greeting, h.params, c.title as category')
+			$query->select('h.name, h.params, c.title as category')
 				  ->from('#__easyfpu as h')
 				  ->leftJoin('#__categories as c ON h.catid=c.id')
 				  ->where('h.id=' . (int)$id);

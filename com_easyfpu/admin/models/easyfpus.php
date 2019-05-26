@@ -33,7 +33,16 @@ class EasyFPUModelEasyFPUs extends JModelList {
         {
             $config['filter_fields'] = array(
                 'id',
-                'greeting',
+                'name',
+                'favorite',
+                'calories',
+                'carbs',
+                'amount_small',
+                'amount_medium',
+                'amount_large',
+                'comment_small',
+                'comment_medium',
+                'comment_large',
                 'author',
                 'created',
                 'published'
@@ -54,7 +63,10 @@ class EasyFPUModelEasyFPUs extends JModelList {
         $query = $db->getQuery(true);
         
         // Create the base select statement
-        $query->select('a.id as id, a.greeting as greeting, a.published as published, a.created as created')
+        $query->select('a.id as id, a.name as name, a.favorite as favorite, a.calories as calories, a.carbs as carbs,
+                        a.amount_small as amount_small, a.amount_medium as amount_medium, a.amount_large as amount_large,
+                        a.comment_small as comment_small, a.comment_medium as comment_medium, a.comment_large as comment_large,
+                        a.published as published, a.created as created')
             ->from($db->quoteName('#__easyfpu', 'a'));
         
         // Join over categories
@@ -71,7 +83,7 @@ class EasyFPUModelEasyFPUs extends JModelList {
         if (!empty($search))
         {
             $like = $db->quote('%' . $search . '%');
-            $query->where('greeting LIKE ' . $like);
+            $query->where('name LIKE ' . $like);
         }
         
         // Filter by published state
@@ -87,7 +99,7 @@ class EasyFPUModelEasyFPUs extends JModelList {
         }
         
         // Add the list ordering clause.
-        $orderCol	= $this->state->get('list.ordering', 'greeting');
+        $orderCol	= $this->state->get('list.ordering', 'name');
         $orderDirn 	= $this->state->get('list.direction', 'asc');
         
         $query->order($db->escape($orderCol) . ' ' . $db->escape($orderDirn));

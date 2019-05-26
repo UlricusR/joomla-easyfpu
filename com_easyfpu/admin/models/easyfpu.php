@@ -98,7 +98,7 @@ class EasyFPUModelEasyFPU extends JModelAdmin
     }
     
     /**
-     * Method to check if it's OK to delete a message. Overrides JModelAdmin::canDelete
+     * Method to check if it's OK to delete a fooditem. Overrides JModelAdmin::canDelete
      */
     protected function canDelete($record)
     {

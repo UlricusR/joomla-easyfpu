@@ -10,5 +10,5 @@
 // No direct access
 defined('_JEXEC') or die;
 ?>
-<h1><?php echo $this->item->greeting.(($this->item->category and $this->item->params->get('show_category'))
+<h1><?php echo $this->item->name.(($this->item->category and $this->item->params->get('show_category'))
                                       ? (' ('.$this->item->category.')') : ''); ?></h1>

@@ -9,14 +9,118 @@
 			type="hidden"
 		/>
 		<field
-			name="greeting"
+			name="name"
 			type="text"
-			label="COM_EASYFPU_EASYFPU_GREETING_LABEL"
-			description="COM_EASYFPU_EASYFPU_GREETING_DESC"
+			label="COM_EASYFPU_EASYFPU_NAME_LABEL"
+			description="COM_EASYFPU_EASYFPU_NAME_DESC"
 			size="40"
-			class="inputbox validate-greeting"
-			validate="greeting"
+			class="inputbox"
+			validate="name"
 			required="true"
+            hint="COM_EASYFPU_EASYFPU_NAME_HINT"
+			default=""
+		/>
+		<field
+			name="favorite"
+			type="checkbox"
+			label="COM_EASYFPU_EASYFPU_FAVORITE_LABEL"
+			description="COM_EASYFPU_EASYFPU_FAVORITE_DESC"
+			checked="0"
+		/>
+		<field
+			name="calories"
+			type="text"
+			label="COM_EASYFPU_EASYFPU_CALORIES_LABEL"
+			description="COM_EASYFPU_EASYFPU_CALORIES_DESC"
+			size="40"
+			class="inputbox"
+			required="true"
+            hint="COM_EASYFPU_EASYFPU_CALORIES_HINT"
+			default=""
+			pattern="/^(\d+(?:[\.\,]\d{2})?)$/"
+		/>
+		<field
+			name="carbs"
+			type="text"
+			label="COM_EASYFPU_EASYFPU_CARBS_LABEL"
+			description="COM_EASYFPU_EASYFPU_CARBS_DESC"
+			size="40"
+			class="inputbox"
+			required="true"
+            hint="COM_EASYFPU_EASYFPU_CARBS_HINT"
+			default=""
+			pattern="/^(\d+(?:[\.\,]\d{2})?)$/"
+		/>
+		<field
+			name="amount_small"
+			type="text"
+			label="COM_EASYFPU_EASYFPU_AMOUNT_SMALL_LABEL"
+			description="COM_EASYFPU_EASYFPU_AMOUNT_SMALL_DESC"
+			size="40"
+			class="inputbox"
+			required="false"
+            hint="COM_EASYFPU_EASYFPU_AMOUNT_SMALL_HINT"
+			default=""
+			pattern="^\d+$"
+		/>
+		<field
+			name="comment_small"
+			type="text"
+			label="COM_EASYFPU_EASYFPU_COMMENT_SMALL_LABEL"
+			description="COM_EASYFPU_EASYFPU_COMMENT_SMALL_DESC"
+			size="40"
+			class="inputbox"
+			validate="name"
+			required="false"
+            hint="COM_EASYFPU_EASYFPU_COMMENT_SMALL_HINT"
+			default=""
+		/>
+		<field
+			name="amount_medium"
+			type="text"
+			label="COM_EASYFPU_EASYFPU_AMOUNT_MEDIUM_LABEL"
+			description="COM_EASYFPU_EASYFPU_AMOUNT_MEDIUM_DESC"
+			size="40"
+			class="inputbox"
+			required="false"
+            hint="COM_EASYFPU_EASYFPU_AMOUNT_MEDIUM_HINT"
+			default=""
+			pattern="^\d+$"
+		/>
+		<field
+			name="comment_medium"
+			type="text"
+			label="COM_EASYFPU_EASYFPU_COMMENT_MEDIUM_LABEL"
+			description="COM_EASYFPU_EASYFPU_COMMENT_MEDIUM_DESC"
+			size="40"
+			class="inputbox"
+			validate="name"
+			required="false"
+            hint="COM_EASYFPU_EASYFPU_COMMENT_MEDIUM_HINT"
+			default=""
+		/>
+		<field
+			name="amount_large"
+			type="text"
+			label="COM_EASYFPU_EASYFPU_AMOUNT_LARGE_LABEL"
+			description="COM_EASYFPU_EASYFPU_AMOUNT_LARGE_DESC"
+			size="40"
+			class="inputbox"
+			required="false"
+            hint="COM_EASYFPU_EASYFPU_AMOUNT_LARGE_HINT"
+			default=""
+			pattern="^\d+$"
+		/>
+		<field
+			name="comment_large"
+			type="text"
+			label="COM_EASYFPU_EASYFPU_COMMENT_LARGE_LABEL"
+			description="COM_EASYFPU_EASYFPU_COMMENT_LARGE_DESC"
+			size="40"
+			class="inputbox"
+			validate="name"
+			required="false"
+            hint="COM_EASYFPU_EASYFPU_COMMENT_LARGE_HINT"
 			default=""
 		/>
 		<field
@@ -67,7 +171,7 @@
 			validate="rules"
 			class="inputbox"
 			component="com_easyfpu"
-			section="message"
+			section="fooditem"
 		/>
     </fieldset>
 </form>

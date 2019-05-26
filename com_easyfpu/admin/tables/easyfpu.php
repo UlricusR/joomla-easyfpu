@@ -71,7 +71,7 @@ class EasyFPUTableEasyFPU extends JTable {
      * @since	2.5
      */
     protected function _getAssetTitle() {
-        return $this->greeting;
+        return $this->name;
     }
     
     /**

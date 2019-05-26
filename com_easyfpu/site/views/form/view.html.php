@@ -15,7 +15,7 @@ use Joomla\CMS\Factory;
 
 /**
  * EasyFPU View
- * This is the site view presenting the user with the ability to add a new Helloworld record
+ * This is the site view presenting the user with the ability to add a new EasyFPU record
  *
  */
 class EasyFPUViewForm extends JViewLegacy

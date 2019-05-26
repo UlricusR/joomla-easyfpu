@@ -22,8 +22,8 @@ JHtml::_('behavior.formvalidator');
 // with id="jform_title" and sets its value as the 'title' parameter to send in the Ajax request
 Factory::getDocument()->addScriptDeclaration('
 	jQuery(document).ready(function() {
-        greeting = jQuery("#jform_greeting").val();
-		jQuery("#jform_title").val(greeting);
+        name = jQuery("#jform_name").val();
+		jQuery("#jform_title").val(name);
 	});
 ');
 
@@ -31,12 +31,12 @@ Factory::getDocument()->addScriptDeclaration('
 <form action="<?php echo JRoute::_('index.php?option=com_easyfpu&layout=edit&id=' . (int) $this->item->id); ?>"
     method="post" name="adminForm" id="adminForm" class="form-validate">
     
-    <input id="jform_title" type="hidden" name="easyfpu-message-title"/>
+    <input id="jform_title" type="hidden" name="easyfpu-fooditem-title"/>
     
     <div class="form-horizontal">
     	<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
     	<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', 
-            empty($this->item->id) ? JText::_('COM_EASYFPU_TAB_NEW_MESSAGE') : JText::_('COM_EASYFPU_TAB_EDIT_MESSAGE')); ?>
+            empty($this->item->id) ? JText::_('COM_EASYFPU_TAB_NEW_FOODITEM') : JText::_('COM_EASYFPU_TAB_EDIT_FOODITEM')); ?>
         	<fieldset class="adminform">
             	<legend><?php echo JText::_('COM_EASYFPU_LEGEND_DETAILS') ?></legend>
             	<div class="row-fluid">

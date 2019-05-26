@@ -20,7 +20,7 @@ use Joomla\CMS\Factory;
  * @subpackage  com_easyfpu
  *
  * Used to handle the http POST from the front-end form which allows
- * users to enter a new easyfpu message
+ * users to enter a new easyfpu fooditem
  *
  */
 class EasyFPUControllerEasyFPU extends JControllerForm
@@ -136,7 +136,7 @@ class EasyFPUControllerEasyFPU extends JControllerForm
         // clear the data in the form
         $app->setUserState($context . '.data', null);
         
-        // notify the administrator that a new easyfpu message has been added on the front end
+        // notify the administrator that a new easyfpu fooditem has been added on the front end
         
         // get the id of the person to notify from global config
         $params   = $app->getParams();
@@ -158,8 +158,8 @@ class EasyFPUControllerEasyFPU extends JControllerForm
         // get the Mailer object, set up the email to be sent, and send it
         $mailer = Factory::getMailer();
         $mailer->addRecipient($to_address);
-        $mailer->setSubject("New easyfpu message added by " . $current_username);
-        $mailer->setBody("New greeting is " . $validData['greeting']);
+        $mailer->setSubject("New easyfpu fooditem added by " . $current_username);
+        $mailer->setBody("New fooditem is " . $validData['name']);
         try
         {
             $mailer->send();

@@ -10,8 +10,8 @@
 			<field
 				name="id"
 				type="easyfpu"
-				label="COM_EASYFPU_EASYFPU_FIELD_GREETING_LABEL"
-				description="COM_EASYFPU_EASYFPU_FIELD_GREETING_DESC"/>
+				label="COM_EASYFPU_EASYFPU_FIELD_NAME_LABEL"
+				description="COM_EASYFPU_EASYFPU_FIELD_NAME_DESC"/>
 		</fieldset>
 	</fields>
 </metadata>

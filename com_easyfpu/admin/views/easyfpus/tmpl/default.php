@@ -39,7 +39,7 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
     				<?php echo JHtml::_('grid.checkall'); ?>
     			</th>
     			<th width="30%">
-    				<?php echo JHtml::_('searchtools.sort', 'COM_EASYFPU_EASYFPUS_NAME', 'greeting', $listDirn, $listOrder); ?>
+    				<?php echo JHtml::_('searchtools.sort', 'COM_EASYFPU_EASYFPUS_NAME', 'name', $listDirn, $listOrder); ?>
     			</th>
     			<th width="30%">
                     <?php echo JHtml::_('searchtools.sort', 'COM_EASYFPU_AUTHOR', 'author', $listDirn, $listOrder); ?>
@@ -76,7 +76,7 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
     						</td>
     						<td>
     							<a href="<?php echo $link; ?>" title="<?php echo JText::_('COM_EASYFPU_EDIT_EASYFPU'); ?>">
-    								<?php echo $row->greeting; ?>
+    								<?php echo $row->name; ?>
     							</a>
     							<div class="small">
 									<?php echo JText::_('JCATEGORY') . ': ' . $this->escape($row->category_title); ?>

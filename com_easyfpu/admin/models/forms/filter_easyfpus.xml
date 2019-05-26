@@ -25,11 +25,11 @@
 			label="COM_EASYFPU_LIST_FULL_ORDERING"
 			description="COM_EASYFPU_LIST_FULL_ORDERING_DESC"
 			onchange="this.form.submit();"
-			default="greeting ASC"
+			default="name ASC"
 		>
 			<option value="">JGLOBAL_SORT_BY</option>
-			<option value="greeting ASC">COM_EASYFPU_ORDERING_ASC</option>
-			<option value="greeting DESC">COM_EASYFPU_ORDERING_DESC</option>
+			<option value="name ASC">COM_EASYFPU_ORDERING_ASC</option>
+			<option value="name DESC">COM_EASYFPU_ORDERING_DESC</option>
 			<option value="id ASC">JGRID_HEADING_ID_ASC</option>
 			<option value="id DESC">JGRID_HEADING_ID_DESC</option>
 			<option value="published ASC">COM_EASYFPU_PUBLISHED_ASC</option>
