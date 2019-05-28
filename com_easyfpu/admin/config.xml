@@ -2,8 +2,8 @@
 <config>
 	<fieldset
 		name="names"
-		label="COM_EASYFPU_CONFIG_NAMES_SETTINGS_LABEL"
-		description="COM_EASYFPU_CONFIG_NAMES_SETTINGS_DESC"
+		label="COM_EASYFPU_CONFIG_FOODITEM_SETTINGS_LABEL"
+		description="COM_EASYFPU_CONFIG_FOODITEM_SETTINGS_DESC"
 	>
 		<field
 			name="show_category"

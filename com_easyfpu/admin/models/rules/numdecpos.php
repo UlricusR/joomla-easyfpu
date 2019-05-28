@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 /**
  * Form Rule class for the Joomla Framework.
  */
-class JFormRuleName extends JFormRule
+class JFormRuleNumdecpos extends JFormRule
 {
     /**
      * The regular expression.
@@ -22,5 +22,5 @@ class JFormRuleName extends JFormRule
      * @var		string
      * @since	2.5
      */
-    protected $regex = '^[^0-9]+$';
+    protected $regex = '^\d+$';
 }

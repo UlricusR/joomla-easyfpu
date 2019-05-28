@@ -32,7 +32,7 @@ abstract class EasyFPUHelper extends JHelperContent
     public static function addSubmenu($submenu)
     {
         JHtmlSidebar::addEntry(
-            JText::_('COM_EASYFPU_SUBMENU_MESSAGES'),
+            JText::_('COM_EASYFPU_SUBMENU_FOODITEMS'),
             'index.php?option=com_easyfpu',
             $submenu == 'easyfpus'
             );

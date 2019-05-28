@@ -25,6 +25,9 @@ if (!Factory::getUser()->authorise('core.manage', 'com_easyfpu')) {
 // Require helper file
 JLoader::register('EasyFPUHelper', JPATH_COMPONENT . '/helpers/easyfpu.php');
 
+// Add rule path
+JForm::addRulePath('administrator/components/com_easyfpu/models/rules');
+
 // Get an instance of the controller prefixed by EasyFPU
 $controller = JControllerLegacy::getInstance('EasyFPU');
 
