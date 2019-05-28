@@ -41,7 +41,7 @@ class EasyFPUModelEasyFPU extends JModelItem {
         // Get the message id
         $jinput = Factory::getApplication()->input;
         $id     = $jinput->get('id', 1, 'INT');
-        $this->setState('message.id', $id);
+        $this->setState('fooditem.id', $id);
         
         // Load the parameters.
         $this->setState('params', Factory::getApplication()->getParams());
