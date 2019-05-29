@@ -46,7 +46,7 @@ class JFormFieldEasyFPU extends JFormFieldList {
         
         if ($fooditems) {
             foreach ($fooditems as $fooditem) {
-                $options[] = JHtml::_('select.option', $fooditem->id, $fooditem->greeting .
+                $options[] = JHtml::_('select.option', $fooditem->id, $fooditem->name .
                     ($fooditem->catid ? ' (' . $fooditem->category . ')' : ''));
             }
         }
