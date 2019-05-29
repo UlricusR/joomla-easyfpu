@@ -27,13 +27,17 @@ class EasyFPUModelEasyFPUs extends JModelList
      */
     protected function getListQuery()
     {
-        // Initialize variables.
+        // Initialize variables
         $db    = Factory::getDbo();
         $query = $db->getQuery(true);
         
+        // Make sure the user is logged in in your view.html.php!
+        $user = Factory::getUser();
+
         // Create the base select statement.
         $query->select('*')
-            ->from($db->quoteName('#__easyfpu'));
+            ->from($db->quoteName('#__easyfpu'))
+            ->where('created_by = ' . $user->id);
         
         return $query;
     }

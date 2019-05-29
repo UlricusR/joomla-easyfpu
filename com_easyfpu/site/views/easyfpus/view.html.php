@@ -31,32 +31,39 @@ class EasyFPUViewEasyFPUs extends JViewLegacy {
         $app = Factory::getApplication();
         $context = "easyfpu.list.site.easyfpu";
         
-        // Get data from the model
-        $this->items            = $this->get('Items');
-        $this->pagination       = $this->get('Pagination');
-        //$this->state			= $this->get('State');
-        //$this->filterForm    	= $this->get('FilterForm');
-        //$this->activeFilters 	= $this->get('ActiveFilters');
+        // First check if user is logged in
+        $user = Factory::getUser();
         
-        // What Access Permissions does this user have? What can (s)he do?
-        //$this->canDo = JHelperContent::getActions('com_easyfpu');
+        if ($user->guest) {
+            Factory::getApplication()->enqueueMessage(JText::_('COM_EASYFPU_NOTICE_LOGIN'), 'notice');
+        } else {
+            // Get data from the model
+            $this->items            = $this->get('Items');
+            $this->pagination       = $this->get('Pagination');
+            //$this->state			= $this->get('State');
+            //$this->filterForm    	= $this->get('FilterForm');
+            //$this->activeFilters 	= $this->get('ActiveFilters');
+            
+            // What Access Permissions does this user have? What can (s)he do?
+            //$this->canDo = JHelperContent::getActions('com_easyfpu');
+            
+            // Check for errors
+            if (count($errors = $this->get('Errors'))) {
+                throw new Exception(implode("\n", $errors), 500);
+            }
+            
+            // Set the submenu
+            //EasyFPUHelper::addSubmenu('easyfpus');
+            
+            // Set the toolbar and number of found items
+            //$this->addToolBar();
         
-        // Check for errors
-        if (count($errors = $this->get('Errors'))) {
-            throw new Exception(implode("\n", $errors), 500);
+            // Display the template
+            parent::display($tpl);
+            
+            // Set the document
+            //$this->setDocument();
         }
-        
-        // Set the submenu
-        //EasyFPUHelper::addSubmenu('easyfpus');
-        
-        // Set the toolbar and number of found items
-        //$this->addToolBar();
-        
-        // Display the template
-        parent::display($tpl);
-        
-        // Set the document
-        //$this->setDocument();
     }
     
     /**
