@@ -14,40 +14,12 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 
 /**
- * EasyFPU model
- * 
- * @since 0.0.1
+ * EasyFPU Model
+ *
+ * @since  0.0.1
  */
-class EasyFPUModelEasyFPU extends JModelItem {
-    /**
-     * @var object item
-     */
-    protected $item;
-    
-    /**
-     * Method to auto-populate the model state.
-     *
-     * This method should only be called once per instantiation and is designed
-     * to be called on the first call to the getState() method unless the model
-     * configuration flag to ignore the request is set.
-     *
-     * Note. Calling getState in this method will result in recursion.
-     *
-     * @return	void
-     * @since	2.5
-     */
-    protected function populateState()
-    {
-        // Get the message id
-        $jinput = Factory::getApplication()->input;
-        $id     = $jinput->get('id', 1, 'INT');
-        $this->setState('fooditem.id', $id);
-        
-        // Load the parameters.
-        $this->setState('params', Factory::getApplication()->getParams());
-        parent::populateState();
-    }
-    
+class EasyFPUModelEasyFPU extends JModelAdmin
+{
     /**
      * Method to get a table object, load it if necessary.
      *
@@ -57,42 +29,82 @@ class EasyFPUModelEasyFPU extends JModelItem {
      *
      * @return  JTable  A JTable object
      *
-     * @since   0.0.1
+     * @since   1.6
      */
-    public function getTable($type = 'EasyFPU', $prefix = 'EasyFPUTable', $config = array()) {
+    public function getTable($type = 'EasyFPU', $prefix = 'EasyFPUTable', $config = array())
+    {
         return JTable::getInstance($type, $prefix, $config);
     }
     
     /**
-	 * Get the message
-	 * @return object The message to be displayed to the user
-	 */
-	public function getItem()
-	{
-		if (!isset($this->item)) 
-		{
-			$id    = $this->getState('fooditem.id');
-			$db    = Factory::getDbo();
-			$query = $db->getQuery(true);
-			$query->select('h.name, h.params, c.title as category')
-				  ->from('#__easyfpu as h')
-				  ->leftJoin('#__categories as c ON h.catid=c.id')
-				  ->where('h.id=' . (int)$id);
-			$db->setQuery((string)$query);
-		
-			if ($this->item = $db->loadObject()) 
-			{
-				// Load the JSON string
-				$params = new JRegistry;
-				$params->loadString($this->item->params, 'JSON');
-				$this->item->params = $params;
-
-				// Merge global params with item params
-				$params = clone $this->getState('params');
-				$params->merge($this->item->params);
-				$this->item->params = $params;
-			}
-		}
-		return $this->item;
-	}
+     * Method to get the record form.
+     *
+     * @param   array    $data      Data for the form.
+     * @param   boolean  $loadData  True if the form is to load its own data (default case), false if not.
+     *
+     * @return  mixed    A JForm object on success, false on failure
+     *
+     * @since   1.6
+     */
+    public function getForm($data = array(), $loadData = true)
+    {
+        // Get the form.
+        $form = $this->loadForm(
+            'com_easyfpu.easyfpu',
+            'easyfpu',
+            array(
+                'control' => 'jform',
+                'load_data' => $loadData
+            )
+        );
+        
+        if (empty($form)) {
+            return false;
+        }
+        
+        return $form;
+    }
+    
+    /**
+     * Method to get the script that have to be included on the form
+     *
+     * @return string	Script files
+     */
+    public function getScript()
+    {
+        return 'components/com_easyfpu/models/forms/easyfpu.js';
+    }
+    
+    /**
+     * Method to get the data that should be injected in the form.
+     *
+     * @return  mixed  The data for the form.
+     *
+     * @since   1.6
+     */
+    protected function loadFormData()
+    {
+        // Check the session for previously entered form data.
+        $data = Factory::getApplication()->getUserState(
+            'com_easyfpu.edit.easyfpu.data',
+            array()
+            );
+        
+        if (empty($data)) {
+            $data = $this->getItem();
+        }
+        
+        return $data;
+    }
+    
+    /**
+     * Method to check if it's OK to delete a fooditem. Overrides JModelAdmin::canDelete
+     */
+    protected function canDelete($record)
+    {
+        if( !empty( $record->id ) )
+        {
+            return Factory::getUser()->authorise( "core.delete", "com_easyfpu.easyfpu." . $record->id );
+        }
+    }
 }

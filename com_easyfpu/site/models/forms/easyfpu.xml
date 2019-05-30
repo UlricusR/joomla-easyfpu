@@ -45,7 +45,7 @@
 			description="COM_EASYFPU_EASYFPU_CARBS_DESC"
 			size="40"
 			class="inputbox validate-numfracpos"
-			validate="numfracpos"
+			validate="carbs"
 			required="true"
             hint="COM_EASYFPU_EASYFPU_CARBS_HINT"
             message="COM_EASYFPU_EASYFPU_ERRMSG_NUMBER_FRAC"
@@ -131,17 +131,6 @@
         >
 			<option value="0">JOPTION_SELECT_CATEGORY</option>
 		</field>
-        <field
-            name="message"
-            type="textarea"
-            rows="5"
-            cols="80"
-			label="COM_EASYFPU_EASYFPU_MESSAGE_LABEL"
-			description="COM_EASYFPU_EASYFPU_MESSAGE_DESC"
-            hint="COM_EASYFPU_EASYFPU_MESSAGE_HINT"
-			required="true"
-        >
-        </field>
         <field
 			name="captcha"
 			type="captcha"

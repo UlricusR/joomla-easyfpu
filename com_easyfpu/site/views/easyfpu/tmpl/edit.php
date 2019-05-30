@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 JHtml::_('behavior.formvalidator');
 
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_easyfpu&view=form&layout=edit'); ?>"
+<form action="<?php echo JRoute::_('index.php?option=com_easyfpu&view=easyfpu&layout=edit'); ?>"
     method="post" name="adminForm" id="adminForm" class="form-validate">
 
 	<div class="form-horizontal">

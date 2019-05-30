@@ -25,13 +25,29 @@ use Joomla\CMS\Factory;
  */
 class EasyFPUControllerEasyFPU extends JControllerForm
 {
+    /**
+     * Implement to allow edit or not
+     * Overwrites: JControllerForm::allowEdit
+     *
+     * @param array $data
+     * @param string $key
+     * @return bool
+     */
+    protected function allowEdit($data = array(), $key = 'id') {
+        $id = isset( $data[ $key ] ) ? $data[ $key ] : 0;
+        if( !empty( $id ) )
+        {
+            return Factory::getUser()->authorise( "core.edit", "com_easyfpu.easyfpu." . $id );
+        }
+    }
+    
     public function cancel($key = null)
     {
         parent::cancel($key);
         
         // set up the redirect back to the same form
         $this->setRedirect(
-            (string)JUri::getInstance(),
+            JRoute::_('index.php?option=com_easyfpu&view=easyfpus'),
             JText::_('COM_EASYFPU_ADD_CANCELLED')
         );
     }
@@ -47,11 +63,12 @@ class EasyFPUControllerEasyFPU extends JControllerForm
         
         $app = Factory::getApplication();
         $input = $app->input;
-        $model = $this->getModel('form');
+        $model = $this->getModel('easyfpu');
         
         // Get the current URI to set in redirects. As we're handling a POST,
         // this URI comes from the <form action="..."> attribute in the layout file above
         $currentUri = (string)JUri::getInstance();
+        $redirectUri = JRoute::_('index.php?option=com_easyfpu&view=easyfpus');
         
         // Check that this user is allowed to add a new record
         if (!Factory::getUser()->authorise( "core.create", "com_easyfpu"))
@@ -136,41 +153,8 @@ class EasyFPUControllerEasyFPU extends JControllerForm
         // clear the data in the form
         $app->setUserState($context . '.data', null);
         
-        // notify the administrator that a new easyfpu fooditem has been added on the front end
-        
-        // get the id of the person to notify from global config
-        $params   = $app->getParams();
-        $userid_to_email = (int) $params->get('user_to_email');
-        $user_to_email = JUser::getInstance($userid_to_email);
-        $to_address = $user_to_email->get("email");
-        
-        // get the current user (if any)
-        $current_user = Factory::getUser();
-        if ($current_user->get("id") > 0)
-        {
-            $current_username = $current_user->get("username");
-        }
-        else
-        {
-            $current_username = "a visitor to the site";
-        }
-        
-        // get the Mailer object, set up the email to be sent, and send it
-        $mailer = Factory::getMailer();
-        $mailer->addRecipient($to_address);
-        $mailer->setSubject("New easyfpu fooditem added by " . $current_username);
-        $mailer->setBody("New fooditem is " . $validData['name']);
-        try
-        {
-            $mailer->send();
-        }
-        catch (Exception $e)
-        {
-            JLog::add('Caught exception: ' . $e->getMessage(), JLog::Error, 'jerror');
-        }
-        
         $this->setRedirect(
-            $currentUri,
+            $redirectUri,
             JText::_('COM_EASYFPU_ADD_SUCCESSFUL')
         );
         

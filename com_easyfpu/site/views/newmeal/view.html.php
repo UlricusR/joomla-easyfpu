@@ -14,11 +14,11 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 
 /**
- * EasyFPUs View
+ * NewMeal View
  * 
  * @since 0.0.1
  */
-class EasyFPUViewEasyFPUs extends JViewLegacy {
+class EasyFPUViewNewMeal extends JViewLegacy {
     /**
      * Display the EasyFPU view
      * 

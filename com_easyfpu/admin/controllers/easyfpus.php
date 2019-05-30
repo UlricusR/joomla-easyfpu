@@ -10,12 +10,15 @@
 // No direct access
 defined('_JEXEC') or die;
 
+// Imports
+use Joomla\CMS\MVC\Controller\AdminController;
+
 /**
  * EasyFPUs controller
  * 
  * @since 0.0.1
  */
-class EasyFPUControllerEasyFPUs extends JControllerAdmin {
+class EasyFPUControllerEasyFPUs extends AdminController {
     /**
      * Proxy for getModel.
      *

@@ -9,6 +9,14 @@
 
 // No direct access
 defined('_JEXEC') or die;
-?>
-<h1><?php echo $this->item->name.(($this->item->category and $this->item->params->get('show_category'))
-                                      ? (' ('.$this->item->category.')') : ''); ?></h1>
+
+// Imports
+use Joomla\CMS\Factory;
+
+// Get items to add to meal.
+$input = Factory::getApplication()->input;
+$ids = $input->get('ids');
+var_dump($ids);
+
+\JHtml::_('behavior.formvalidator');
+
