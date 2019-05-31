@@ -28,6 +28,9 @@ class EasyFPUModelNewMeal extends ListModel
      */
     protected function getListQuery()
     {
+        // Get the selected IDs
+        $ids = Factory::getApplication()->input->getString('ids', '');
+        
         // Initialize variables
         $db    = Factory::getDbo();
         $query = $db->getQuery(true);
@@ -35,10 +38,13 @@ class EasyFPUModelNewMeal extends ListModel
         // Make sure the user is logged in in your view.html.php!
         $user = Factory::getUser();
 
-        // Create the base select statement.
+        // Create the base select statement; we add the user as criterium as we pass the IDs via URL,
+        // so this makes sure that we cannot retrieve food items not belonging to the user in case
+        // of manually manipulated URL parameters
         $query->select('*')
             ->from($db->quoteName('#__easyfpu'))
-            ->where('created_by = ' . $user->id);
+            ->where('created_by = ' . $user->id)
+            ->andWhere('id IN (' . $ids .')');
         
         return $query;
     }
