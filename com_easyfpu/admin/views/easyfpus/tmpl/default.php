@@ -15,7 +15,7 @@ JHtml::_('formbehavior.chosen', 'select');
 $listOrder     = $this->escape($this->state->get('list.ordering'));
 $listDirn      = $this->escape($this->state->get('list.direction'));
 ?>
-<form action="index.php?option=com_easyfpu&view=easyfpus" method="post" id="adminForm" name="adminForm">
+<form action="<?php \JRoute::_('index.php?option=com_easyfpu&view=easyfpus'); ?>" method="post" id="adminForm" name="adminForm">
 	<div id="j-sidebar-container" class="span2">
 		<?php echo JHtmlSidebar::render(); ?>
 	</div>

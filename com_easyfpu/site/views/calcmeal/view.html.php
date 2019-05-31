@@ -18,14 +18,14 @@ use Joomla\CMS\Factory;
  * This is the site view presenting the user with the ability to add a new EasyFPU record
  *
  */
-class EasyFPUViewEasyFPU extends JViewLegacy
+class EasyFPUViewCalcMeal extends JViewLegacy
 {
     
     protected $form = null;
-    protected $canDo;
+    protected $amounts = null;
     
     /**
-     * Display the EasyFPU view
+     * Display the CalcMeal view
      *
      * @param   string  $tpl  The name of the layout file to parse.
      *
@@ -34,19 +34,8 @@ class EasyFPUViewEasyFPU extends JViewLegacy
     public function display($tpl = null)
     {
         // Get the form to display
-        $this->form = $this->get('Form');
-        // Get the javascript script file for client-side validation
-        $this->script = $this->get('Script');
-        
-        // Check that the user has permissions to create a new easyfpu record
-        $this->canDo = JHelperContent::getActions('com_easyfpu');
-        if (!($this->canDo->get('core.create')))
-        {
-            $app = Factory::getApplication();
-            $app->enqueueMessage(JText::_('JERROR_ALERTNOAUTHOR'), 'error');
-            $app->setHeader('status', 403, true);
-            return;
-        }
+        //$this->form = $this->get('Form');
+        $this->state = $this->get('State');
         
         // Check for errors.
         if (count($errors = $this->get('Errors')))
@@ -68,10 +57,8 @@ class EasyFPUViewEasyFPU extends JViewLegacy
      */
     protected function setDocument()
     {
-        $isNew = ($this->item->id < 1);
         $document = Factory::getDocument();
-        $document->setTitle($isNew ? JText::_('COM_EASYFPU_EASYFPU_CREATING') :
-            JText::_('COM_EASYFPU_EASYFPU_EDITING'));
+        $document->setTitle(JText::_('COM_EASYFPU_YOURMEAL'));
         $document->addScript(JURI::root() . $this->script);
         $document->addScript(JURI::root() . "/components/com_easyfpu"
             . "/views/easyfpu/submitbutton.js");

@@ -48,4 +48,9 @@ class EasyFPUModelNewMeal extends ListModel
         
         return $query;
     }
+    
+    public function getMeal() {
+        $amounts = getState('amounts');
+        return $amounts;
+    }
 }

@@ -15,7 +15,7 @@ JHtml::_('formbehavior.chosen', 'select');
 $listOrder     = $this->escape($this->state->get('list.ordering'));
 $listDirn      = $this->escape($this->state->get('list.direction'));
 ?>
-<form action="index.php?option=com_easyfpu&view=easyfpus" method="post" id="adminForm" name="adminForm">
+<form action="<?php \JRoute::_('index.php?option=com_easyfpu&view=easyfpus'); ?>" method="post" id="adminForm" name="adminForm">
 
 	<!-- The toolbar -->
 	<div class="btn-toolbar">

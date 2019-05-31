@@ -10,14 +10,16 @@
 // No direct access
 defined('_JEXEC') or die;
 
+$ids = array();
+
 \JHtml::_('behavior.formvalidator');
 ?>
-<form action="index.php?option=com_easyfpu&view=newmeal" class="form-validate" method="post" id="adminForm" name="adminForm">
+<form action="<?php \JRoute::_('index.php?option=com_easyfpu&view=newmeal'); ?>" method="post" id="adminForm" name="adminForm">
 
 	<!-- The toolbar -->
 	<div class="btn-toolbar">
 		<div class="btn-group">
-			<button type="button" class="btn btn-success" onclick="Joomla.submitbutton('newmeal.calcmeal')">
+			<button type="button" class="btn btn-success" onclick="Joomla.submitbutton('calcmeal.calcmeal')">
 				<span class="icon-rightarrow"></span><?php echo JText::_('COM_EASYFPU_NEWMEAL') ?>
 			</button>
 		</div>
@@ -60,8 +62,12 @@ defined('_JEXEC') or die;
 							</datalist>
 						</td>
 						<td align="center">
-							<?php echo $row->id; ?>
-							<input name="id<?php echo $row->id; ?>" type="hidden" value="<?php echo $row->id; ?>">
+							<?php 
+							    echo $row->id;
+							    
+							    // Push to ids array
+							    array_push($ids, $row->id);
+							?>
 						</td>
 					</tr>
 				<?php endforeach; ?>
@@ -69,5 +75,6 @@ defined('_JEXEC') or die;
 		</tbody>
 	</table>
 	<input type="hidden" name="task" value=""/>
+	<input type="hidden" name="ids" value="<?php echo implode(',', $ids); ?>">
     <?php echo JHtml::_('form.token'); ?>
 </form>

@@ -32,7 +32,7 @@ class EasyFPUControllerEasyFPUs extends AdminController {
      *
      * @since   1.6
      */
-    public function getModel($name = 'EasyFPU', $prefix = 'EasyFPUModel', $config = array('ignore_request' => true))
+    public function getModel($name = 'EasyFPUs', $prefix = 'EasyFPUModel', $config = array('ignore_request' => true))
     {
         $model = parent::getModel($name, $prefix, $config);
         
@@ -53,7 +53,7 @@ class EasyFPUControllerEasyFPUs extends AdminController {
         // Check for request forgeries
         $this->checkToken();
         
-        // Get items to remove from the request.
+        // Get items to use for new meal
         $cid = $this->input->get('cid', array(), 'array');
         
         if (!is_array($cid) || count($cid) < 1)

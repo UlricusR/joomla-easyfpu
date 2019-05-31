@@ -65,5 +65,9 @@ class EasyFPUViewEasyFPUs extends JViewLegacy {
     {
         $document = Factory::getDocument();
         $document->setTitle(JText::_('COM_EASYFPU_SITE'));
+        $document->addScript(JURI::root() . $this->script);
+        $document->addScript(JURI::root() . "/administrator/components/com_easyfpu"
+            . "/views/easyfpu/submitbutton.js");
+        JText::script('COM_EASYFPU_EASYFPU_ERROR_UNACCEPTABLE');
     }
 }

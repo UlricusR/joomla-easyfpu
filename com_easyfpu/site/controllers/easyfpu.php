@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 
 // Imports
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Controller\FormController;
 
 /**
  * EasyFPU Controller
@@ -23,7 +24,7 @@ use Joomla\CMS\Factory;
  * users to enter a new easyfpu fooditem
  *
  */
-class EasyFPUControllerEasyFPU extends JControllerForm
+class EasyFPUControllerEasyFPU extends FormController
 {
     /**
      * Implement to allow edit or not

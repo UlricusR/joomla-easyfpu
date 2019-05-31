@@ -10,17 +10,25 @@
 // No direct access
 defined('_JEXEC') or die;
 
+// TODO Adapt!
+
 // Imports
 use Joomla\CMS\Factory;
-use Joomla\CMS\MVC\Model\AdminModel;
+use Joomla\CMS\MVC\Model\FormModel;
 
 /**
  * EasyFPU Model
  *
  * @since  0.0.1
  */
-class EasyFPUModelEasyFPU extends AdminModel
+class EasyFPUModelCalcMeal extends FormModel
 {
+    /**
+     * Stores amounts
+     * @var amounts The amounts as id->amount array
+     */
+    public $amounts;
+    
     /**
      * Method to get the record form.
      *
@@ -48,6 +56,11 @@ class EasyFPUModelEasyFPU extends AdminModel
         }
         
         return $form;
+    }
+    
+    public function getAmounts()
+    {
+        return $this->amounts;
     }
     
     /**
@@ -80,16 +93,5 @@ class EasyFPUModelEasyFPU extends AdminModel
         }
         
         return $data;
-    }
-    
-    /**
-     * Method to check if it's OK to delete a fooditem. Overrides JModelAdmin::canDelete
-     */
-    protected function canDelete($record)
-    {
-        if( !empty( $record->id ) )
-        {
-            return Factory::getUser()->authorise( "core.delete", "com_easyfpu.easyfpu." . $record->id );
-        }
     }
 }
