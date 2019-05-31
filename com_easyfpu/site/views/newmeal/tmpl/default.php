@@ -40,16 +40,14 @@ defined('_JEXEC') or die;
 		</thead>
 		<tbody>
 			<?php if (!empty($this->items)) : ?>
-				<?php foreach ($this->items as $i => $row) :
-				    $rowid = $this->pagination->getRowOffset($i);
-				?>
+				<?php foreach ($this->items as $i => $row) : ?>
 					<tr>
 						<td>
 							<?php echo $row->name; ?>
 						</td>
 						<td>
-							<input name="amount<?php echo $rowid; ?>" list="typicalvalues<?php echo $rowid; ?>">
-							<datalist id="typicalvalues<?php echo $rowid; ?>">
+							<input name="amount<?php echo $row->id; ?>" list="typicalvalues<?php echo $row->id; ?>">
+							<datalist id="typicalvalues<?php echo $row->id; ?>">
             			    	<?php if ($row->amount_small > 0) { ?>
             			    		<option value="<?php echo $row->amount_small; ?>"><?php echo (isset($row->comment_small) && $row->comment_small <> '') ? $row->comment_small : \JText::_('COM_EASYFPU_COMMENT_SMALL_DEFAULT'); ?></option>
             			    	<?php } ?>
@@ -63,6 +61,7 @@ defined('_JEXEC') or die;
 						</td>
 						<td align="center">
 							<?php echo $row->id; ?>
+							<input name="id<?php echo $row->id; ?>" type="hidden" value="<?php echo $row->id; ?>">
 						</td>
 					</tr>
 				<?php endforeach; ?>
