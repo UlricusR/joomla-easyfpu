@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 
 \JHtml::_('behavior.formvalidator');
 ?>
-<form action="index.php?option=com_easyfpu&view=newmeal" method="post" id="adminForm" name="adminForm">
+<form action="index.php?option=com_easyfpu&view=newmeal" class="form-validate" method="post" id="adminForm" name="adminForm">
 
 	<!-- The toolbar -->
 	<div class="btn-toolbar">
@@ -22,41 +22,45 @@ defined('_JEXEC') or die;
 			</button>
 		</div>
 	</div>
-	
+
 	<!-- The food list -->
 	<table class="table table-striped table-hover">
 		<thead>
 		<tr>
-			<th width="1%">
-				<?php echo JText::_('COM_EASYFPU_NUM'); ?>
-			</th>
-			<th width="98%">
+			<th width="60%">
 				<?php echo JText::_('COM_EASYFPU_EASYFPUS_NAME'); ?>
+			</th>
+			<th width="38%">
+				<?php echo JText::_('COM_EASYFPU_AMOUNT'); ?>
 			</th>
 			<th width="2%">
 				<?php echo JText::_('COM_EASYFPU_ID'); ?>
 			</th>
 		</tr>
 		</thead>
-		<tfoot>
-			<tr>
-				<td colspan="3">
-					<?php echo $this->pagination->getListFooter(); ?>
-				</td>
-			</tr>
-		</tfoot>
 		<tbody>
 			<?php if (!empty($this->items)) : ?>
 				<?php foreach ($this->items as $i => $row) :
-				    $link = JRoute::_('index.php?option=com_easyfpu&task=easyfpu.edit&id=' . $row->id);
+				    $rowid = $this->pagination->getRowOffset($i);
 				?>
 					<tr>
 						<td>
-							<?php echo $this->pagination->getRowOffset($i); ?>
+							<?php echo $row->name; ?>
 						</td>
 						<td>
-							<?php echo $row->name; ?>
- 						</td>
+							<input name="amount<?php echo $rowid; ?>" list="typicalvalues<?php echo $rowid; ?>">
+							<datalist id="typicalvalues<?php echo $rowid; ?>">
+            			    	<?php if ($row->amount_small > 0) { ?>
+            			    		<option value="<?php echo $row->amount_small; ?>"><?php echo (isset($row->comment_small) && $row->comment_small <> '') ? $row->comment_small : \JText::_('COM_EASYFPU_COMMENT_SMALL_DEFAULT'); ?></option>
+            			    	<?php } ?>
+            			    	<?php if ($row->amount_medium > 0) { ?>
+            			    		<option value="<?php echo $row->amount_medium; ?>"><?php echo (isset($row->comment_medium) && $row->comment_medium <> '') ? $row->comment_medium : \JText::_('COM_EASYFPU_COMMENT_MEDIUM_DEFAULT'); ?></option>
+            			    	<?php } ?>
+            			    	<?php if ($row->amount_large > 0) { ?>
+            			    		<option value="<?php echo $row->amount_large; ?>"><?php echo (isset($row->comment_large) && $row->comment_large <> '') ? $row->comment_large : \JText::_('COM_EASYFPU_COMMENT_LARGE_DEFAULT'); ?></option>
+            			    	<?php } ?>
+							</datalist>
+						</td>
 						<td align="center">
 							<?php echo $row->id; ?>
 						</td>

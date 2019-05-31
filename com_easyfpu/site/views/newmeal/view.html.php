@@ -37,11 +37,9 @@ class EasyFPUViewNewMeal extends JViewLegacy {
             $this->items            = $this->get('Items');
             $this->pagination       = $this->get('Pagination');
             $this->state			= $this->get('State');
+            $this->form             = $this->get('Form');
+            $this->script           = $this->get('Script');
 
-            // Get the selected ids and pass it to the model
-            //$ids = Factory::getApplication()->input->getString('ids', '');
-            //$this->state->set('food.ids', $ids);
-            
             // What Access Permissions does this user have? What can (s)he do?
             $this->canDo = JHelperContent::getActions('com_easyfpu');
             
@@ -66,6 +64,6 @@ class EasyFPUViewNewMeal extends JViewLegacy {
     protected function setDocument()
     {
         $document = Factory::getDocument();
-        $document->setTitle(JText::_('COM_EASYFPU_SITE'));
+        $document->setTitle(JText::_('COM_EASYFPU_NEWMEAL'));
     }
 }

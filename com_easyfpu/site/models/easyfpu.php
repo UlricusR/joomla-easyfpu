@@ -88,7 +88,7 @@ class EasyFPUModelEasyFPU extends JModelAdmin
         $data = Factory::getApplication()->getUserState(
             'com_easyfpu.edit.easyfpu.data',
             array()
-            );
+        );
         
         if (empty($data)) {
             $data = $this->getItem();
