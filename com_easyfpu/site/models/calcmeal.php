@@ -24,12 +24,6 @@ use Joomla\CMS\MVC\Model\FormModel;
 class EasyFPUModelCalcMeal extends FormModel
 {
     /**
-     * Stores amounts
-     * @var amounts The amounts as id->amount array
-     */
-    public $amounts;
-    
-    /**
      * Method to get the record form.
      *
      * @param   array    $data      Data for the form.
@@ -56,11 +50,6 @@ class EasyFPUModelCalcMeal extends FormModel
         }
         
         return $form;
-    }
-    
-    public function getAmounts()
-    {
-        return $this->amounts;
     }
     
     /**

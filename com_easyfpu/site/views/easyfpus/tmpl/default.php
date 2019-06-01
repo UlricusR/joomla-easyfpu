@@ -30,7 +30,7 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
 			</button>
 		</div>
 		<div class="btn-group">
-			<button type="button" class="btn btn-success" onclick="Joomla.submitbutton('easyfpus.newmeal')">
+			<button type="button" class="btn btn-success" onclick="Joomla.submitbutton('newmeal.newmeal')">
 				<span class="icon-rightarrow"></span><?php echo JText::_('COM_EASYFPU_NEWMEAL') ?>
 			</button>
 		</div>

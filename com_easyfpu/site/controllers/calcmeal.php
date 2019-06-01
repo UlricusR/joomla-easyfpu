@@ -51,7 +51,7 @@ class EasyFPUControllerCalcMeal extends BaseController
         // Check for request forgeries
         $this->checkToken();
         
-        // Get items to remove from the request.
+        // Get items to from the request
         $ids = explode(',', $this->input->getString('ids'));
         
         // Make sure they are integers
@@ -64,11 +64,14 @@ class EasyFPUControllerCalcMeal extends BaseController
             $amounts[$id] = $amount;
         }
         
-        // Set to calcmeal model
-        //$this->getModel()->amounts = $amounts;
-        $this->getModel()->setState('amounts', $amounts);
-        
-        // Call calc meal
-        $this->setRedirect(\JRoute::_('index.php?option=com_easyfpu&view=calcmeal'));
+        if ($view = $this->getView('CalcMeal', 'html', 'EasyFPUView')) {    
+            // Set to calcmeal model
+            $model = $this->getModel();
+            $model->setState('amounts', $amounts);
+            $view->setModel($model, true);
+            
+            // Call view
+            $view->display();
+        }
     }
 }

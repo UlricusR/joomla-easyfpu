@@ -38,4 +38,34 @@ class EasyFPUControllerNewMeal extends AdminController {
         
         return $model;
     }
+    
+    public function newmeal($key = null)
+    {
+        // Check for request forgeries
+        $this->checkToken();
+        
+        // Get items to use for new meal
+        $cid = $this->input->get('cid', array(), 'array');
+        
+        if (!is_array($cid) || count($cid) < 1)
+        {
+            \JLog::add(\JText::_('COM_EASYFPU_NO_ITEM_SELECTED'), \JLog::WARNING, 'jerror');
+            $this->setRedirect(\JRoute::_('index.php?option=com_easyfpu&view=easyfpus'));
+        }
+        else
+        {
+            // Make sure the item ids are integers
+            $cid = ArrayHelper::toInteger($cid);
+            
+            if ($view = $this->getView('NewMeal', 'html', 'EasyFPUView')) {
+                // Set to newmeal model
+                $model = $this->getModel();
+                $model->setState('ids', $cid);
+                $view->setModel($model, true);
+                
+                // Call view
+                $view->display();
+            }
+        }
+    }
 }

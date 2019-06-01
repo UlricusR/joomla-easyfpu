@@ -47,30 +47,4 @@ class EasyFPUControllerEasyFPUs extends AdminController {
         // Redirect to new food form
         $this->setRedirect(\JRoute::_('index.php?option=com_easyfpu&view=easyfpu&layout=edit'));
     }
-    
-    public function newmeal($key = null)
-    {
-        // Check for request forgeries
-        $this->checkToken();
-        
-        // Get items to use for new meal
-        $cid = $this->input->get('cid', array(), 'array');
-        
-        if (!is_array($cid) || count($cid) < 1)
-        {
-            \JLog::add(\JText::_('COM_EASYFPU_NO_ITEM_SELECTED'), \JLog::WARNING, 'jerror');
-            $this->setRedirect(\JRoute::_('index.php?option=com_easyfpu&view=easyfpus'));
-        }
-        else
-        {
-            // Make sure the item ids are integers
-            $cid = ArrayHelper::toInteger($cid);
-            
-            // Set the values
-            $this->input->set('ids', implode(',', $cid));
-            
-            // Call new meal, passing the ids
-            $this->setRedirect(\JRoute::_('index.php?option=com_easyfpu&view=newmeal&ids=' . implode(',', $cid)));
-        }
-    }
 }

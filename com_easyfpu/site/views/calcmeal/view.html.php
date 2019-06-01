@@ -12,13 +12,14 @@ defined('_JEXEC') or die;
 
 // Imports
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\View\HtmlView;
 
 /**
  * EasyFPU View
  * This is the site view presenting the user with the ability to add a new EasyFPU record
  *
  */
-class EasyFPUViewCalcMeal extends JViewLegacy
+class EasyFPUViewCalcMeal extends HtmlView
 {
     
     protected $form = null;
@@ -58,9 +59,9 @@ class EasyFPUViewCalcMeal extends JViewLegacy
     protected function setDocument()
     {
         $document = Factory::getDocument();
-        $document->setTitle(JText::_('COM_EASYFPU_YOURMEAL'));
-        $document->addScript(JURI::root() . $this->script);
-        $document->addScript(JURI::root() . "/components/com_easyfpu"
+        $document->setTitle(\JText::_('COM_EASYFPU_YOURMEAL'));
+        $document->addScript(\JUri::root() . $this->script);
+        $document->addScript(\JUri::root() . "/components/com_easyfpu"
             . "/views/easyfpu/submitbutton.js");
         JText::script('COM_EASYFPU_EASYFPU_ERROR_UNACCEPTABLE');
     }
