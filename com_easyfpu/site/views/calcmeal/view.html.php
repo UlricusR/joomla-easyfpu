@@ -22,8 +22,9 @@ use Joomla\CMS\MVC\View\HtmlView;
 class EasyFPUViewCalcMeal extends HtmlView
 {
     
-    protected $form = null;
-    protected $amounts = null;
+    protected $foodItems = null;
+    protected $meal = null;
+    protected $absorptionScheme = null;
     
     /**
      * Display the CalcMeal view

@@ -16,6 +16,26 @@ class FoodItem {
     private $name;
     private $caloriesPer100g;
     private $carbsPer100g;
+    private $fpus;
+    
+    public function __construct($id, $amount, $name, $caloriesPer100g, $carbsPer100g) {
+        $this->id = $id;
+        $this->amount = $amount;
+        $this->name = $name;
+        $this->caloriesPer100g = $caloriesPer100g;
+        $this->carbsPer100g = $carbsPer100g;
+        
+        // Calculate FPUs
+        
+        // 1g carbs has ~4 kcal, so calculate carb portion of calories
+        $carbsCal = $this->getCarbs() * 4;
+        
+        // The carbs from fat and protein is the remainder
+        $calFromFP = $this->getCalories() - $carbsCal;
+        
+        // 100kcal makes 1 FPU
+        $this->fpus = $calFromFP / 100;
+    }
     
     /**
      * @return double the actual calories of the food item
@@ -32,22 +52,10 @@ class FoodItem {
     }
     
     /**
-     * Calculates the Fat Protein Units of the food.
-     *
-     * @return FPU the FPUs associated with that food
+     * @return double the FPUs associated with that food
      */
     public function getFPU() {
-        // 1g carbs has ~4 kcal, so calculate carb portion of calories
-        $carbsCal = $this->amount / 100 * $this->carbsPer100g * 4;
-        
-        // The carbs from fat and protein is the remainder
-        $calFromFP = $this->getCalories() - $carbsCal;
-        
-        // 100kcal makes 1 FPU
-        $fpus = $calFromFP / 100;
-        
-        // Create and return the FPU object
-        return new FPU($fpus);
+        return $this->fpus;
     }
     
     /**
@@ -88,45 +96,5 @@ class FoodItem {
     public function getCarbsPer100g()
     {
         return $this->carbsPer100g;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @param int $amount
-     */
-    public function setAmount($amount)
-    {
-        $this->amount = $amount;
-    }
-
-    /**
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @param double $caloriesPer100g
-     */
-    public function setCaloriesPer100g($caloriesPer100g)
-    {
-        $this->caloriesPer100g = $caloriesPer100g;
-    }
-
-    /**
-     * @param double $carbsPer100g
-     */
-    public function setCarbsPer100g($carbsPer100g)
-    {
-        $this->carbsPer100g = $carbsPer100g;
     }
 }

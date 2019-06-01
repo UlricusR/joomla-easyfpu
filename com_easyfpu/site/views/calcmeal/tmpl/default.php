@@ -9,6 +9,11 @@
 
 // No direct access
 defined('_JEXEC') or die;
+
+print_r($this->meal); echo '<br>';
+print_r($this->foodItems); echo '<br>';
+print_r($this->absorptionScheme); echo '<br>';
+
 ?>
 
 <table>
@@ -21,15 +26,13 @@ defined('_JEXEC') or die;
 		<th><?php echo \JText::_('COM_EASYFPU_EXTENDED_CARBS'); ?></th>
 		<th><?php echo \JText::_('COM_EASYFPU_ABSORPTION_TIME'); ?></th>
 	</tr>
-    <!--
 	<tr>
 		<td><?php echo $this->meal->getName(); ?></td>
 		<td><?php echo $this->meal->getAmount(); ?></td>
 		<td><?php echo $this->meal->getCalories(); ?></td>
 		<td><?php echo $this->meal->getCarbs(); ?></td>
-		<td><?php echo $this->meal->getFPU()->getFPU(); ?></td>
-		<td><?php echo $this->meal->getFPU()->getExtendedCarbs(); ?></td>
-		<td><?php echo $this->absorptionScheme->getAbsorptionTime($this->meal->getFPU()->getFPU()); ?></td>
+		<td><?php echo $this->meal->getFPU(); ?></td>
+		<td><?php echo $this->meal->getFPU() * 10; ?></td>
+		<td></td>
 	</tr>
-	-->
 </table>

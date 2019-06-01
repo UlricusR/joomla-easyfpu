@@ -22,22 +22,22 @@ class Meal {
      * Constructs a new meal.
      *
      * @param name The name of the meal
-     * @param food A list of all food of the meal
+     * @param foodItems A list of all food of the meal
      */
-    public function __construct($name, $foodList) {
+    public function __construct($name, $foodItems) {
         $this->name = $name;
         
         $tempFPUs = 0;
         
         // Calculate calories, carbs and FPUs
-        for ($i = 0; i <  count($foodList); $i++) {
-            $this->calories += $foodList[$i]->getCalories();
-            $this->carbs += $foodList[$i]->getCarbs();
-            $this->amount += $foodList[$i]->getAmount();
-            $tempFPUs += $foodList[$i]->getFPU()->getFPU();
+        foreach ($foodItems as $foodItem) {
+            $this->calories += $foodItem->getCalories();
+            $this->carbs += $foodItem->getCarbs();
+            $this->amount += $foodItem->getAmount();
+            $tempFPUs += $foodItem->getFPU();
         }
         
-        $this->fpus = new FPU($tempFPUs);
+        $this->fpus = $tempFPUs;
     }
     
     /**
@@ -69,9 +69,9 @@ class Meal {
     }
     
     /**
-     * @return FPU The FPUs of the meal
+     * @return double The FPUs of the meal
      */
-    public function getFPUs() {
+    public function getFPU() {
         return $this->fpus;
     }
 }

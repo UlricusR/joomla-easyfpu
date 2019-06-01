@@ -17,7 +17,6 @@ use Joomla\CMS\Factory;
 include_once 'absorptionscheme.php';
 include_once 'absorptionblock.php';
 include_once 'fooditem.php';
-include_once 'fpu.php';
 include_once 'meal.php';
 
 /**
@@ -74,13 +73,12 @@ class EasyFPUModelCalcMeal extends BaseDatabaseModel
             // Create the food items
             $foodItems = array();
             foreach ($results as $result) {
-                $id = intval($result['id']);
-                $foodItem = new FoodItem();
-                $foodItem->setId($id);
-                $foodItem->setName($result['name']);
-                $foodItem->setCaloriesPer100g($result['calories']);
-                $foodItem->setCarbsPer100g($result['carbs']);
-                $foodItem->setAmount(intval($amounts[$id]));
+                $id = intval($result->id);
+                $name = $result->name;
+                $caloriesPer100g = doubleval($result->calories);
+                $carbsPer100g = doubleval($result->carbs);
+                $amount = intval($amounts[$id]);
+                $foodItem = new FoodItem($id, $amount, $name, $caloriesPer100g, $carbsPer100g);
                 array_push($foodItems, $foodItem);
             }
             
@@ -98,7 +96,7 @@ class EasyFPUModelCalcMeal extends BaseDatabaseModel
         if (isset($this->meal)) {
             return $this->meal;
         } else {
-            $this->meal = new Meal(\JText::_('COM_EASYFPU_YOURMEAL'), $this->foodItems);
+            $this->meal = new Meal(\JText::_('COM_EASYFPU_YOURMEAL'), $this->getFoodItems());
             return $this->meal;
         }
     }
