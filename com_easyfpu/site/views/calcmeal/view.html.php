@@ -34,9 +34,9 @@ class EasyFPUViewCalcMeal extends HtmlView
      */
     public function display($tpl = null)
     {
-        // Get the form to display
-        //$this->form = $this->get('Form');
-        $this->state = $this->get('State');
+        $this->foodItems = $this->get('FoodItems');
+        $this->meal = $this->get('Meal');
+        $this->absorptionScheme = $this->get('AbsorptionScheme');
         
         // Check for errors.
         if (count($errors = $this->get('Errors')))

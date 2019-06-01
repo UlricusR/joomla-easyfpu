@@ -10,77 +10,100 @@
 // No direct access
 defined('_JEXEC') or die;
 
-// TODO Adapt!
-
 // Imports
+use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 use Joomla\CMS\Factory;
-use Joomla\CMS\MVC\Model\FormModel;
+
+include_once 'absorptionscheme.php';
+include_once 'absorptionblock.php';
+include_once 'fooditem.php';
+include_once 'fpu.php';
+include_once 'meal.php';
 
 /**
  * EasyFPU Model
  *
  * @since  0.0.1
  */
-class EasyFPUModelCalcMeal extends FormModel
+class EasyFPUModelCalcMeal extends BaseDatabaseModel
 {
-    /**
-     * Method to get the record form.
-     *
-     * @param   array    $data      Data for the form.
-     * @param   boolean  $loadData  True if the form is to load its own data (default case), false if not.
-     *
-     * @return  mixed    A JForm object on success, false on failure
-     *
-     * @since   1.6
-     */
-    public function getForm($data = array(), $loadData = true)
-    {
-        // Get the form.
-        $form = $this->loadForm(
-            'com_easyfpu.easyfpu',
-            'easyfpu',
-            array(
-                'control' => 'jform',
-                'load_data' => $loadData
-            )
-        );
+    private $foodItems = null;
+    private $meal = null;
+    private $absorptionScheme = null;
+    
+    public function __construct($config = array()) {
+        parent::__construct($config);
         
-        if (empty($form)) {
-            return false;
+        // Load absorption scheme
+        $json = file_get_contents(JPATH_BASE . 'components/com_easyfpu/models/absorptionscheme_default.json');
+        $absorptionScheme = json_decode($json);
+        $absorptionBlocks = array();
+        foreach ($absorptionScheme as $absorptionBlock) {
+            $maxFPU = intval($absorptionBlock['max_fpu']);
+            $absorptionTime = intval($absorptionBlock['absorption_time']);
+            array_push($absorptionBlocks, new AbsorptionBlock($maxFPU, $absorptionTime));
         }
-        
-        return $form;
+        $this->absorptionScheme = new AbsorptionScheme($absorptionBlocks);
     }
     
     /**
-     * Method to get the script that have to be included on the form
-     *
-     * @return string	Script files
+     * Returns the individual food items
+     * @return array FoodItem an array of food items
      */
-    public function getScript()
-    {
-        return 'components/com_easyfpu/models/forms/easyfpu.js';
+    public function getFoodItems() {
+        if (isset($this->foodItems)) {
+            return $this->foodItems;
+        } else {
+            // Get the ids
+            $amounts = $this->getState('amounts');
+            $ids = array_keys($amounts);
+            
+            // Get the user
+            $user = Factory::getUser();
+            
+            // Load the food item from the database
+            $db = Factory::getDbo();
+            $query = $db->getQuery(true);
+            $query->select('*')
+                ->from($db->quoteName('#__easyfpu'))
+                ->where('created_by = ' . $user->id)
+                ->andWhere('id IN (' . implode(',', $ids) .')');
+            $db->setQuery($query);
+            $results = $db->loadObjectList();
+            
+            // Create the food items
+            $foodItems = array();
+            foreach ($results as $result) {
+                $id = intval($result['id']);
+                $foodItem = new FoodItem();
+                $foodItem->setId($id);
+                $foodItem->setName($result['name']);
+                $foodItem->setCaloriesPer100g($result['calories']);
+                $foodItem->setCarbsPer100g($result['carbs']);
+                $foodItem->setAmount(intval($amounts[$id]));
+                array_push($foodItems, $foodItem);
+            }
+            
+            // Set the food items
+            $this->foodItems = $foodItems;
+            return $foodItems;
+        }
     }
     
     /**
-     * Method to get the data that should be injected in the form.
-     *
-     * @return  mixed  The data for the form.
-     *
-     * @since   1.6
+     * Returns the complete meal
+     * @return Meal the FPUs of the complete meal
      */
-    protected function loadFormData()
-    {
-        // Check the session for previously entered form data.
-        $data = Factory::getApplication()->getUserState(
-            'com_easyfpu.edit.easyfpu.data',
-            array()
-        );
-        
-        if (empty($data)) {
-            $data = $this->getItem();
+    public function getMeal() {
+        if (isset($this->meal)) {
+            return $this->meal;
+        } else {
+            $this->meal = new Meal(\JText::_('COM_EASYFPU_YOURMEAL'), $this->foodItems);
+            return $this->meal;
         }
-        
-        return $data;
+    }
+    
+    public function getAbsorptionScheme() {
+        return $this->absorptionScheme;
     }
 }
