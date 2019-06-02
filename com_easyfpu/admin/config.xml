@@ -27,13 +27,37 @@
             <option value="">JOPTION_USE_DEFAULT</option>
 			<option value="0">JOPTION_DO_NOT_USE</option>
 		</field>
-        <field
-			name="user_to_email"
-			type="user"
-			label="COM_EASYFPU_EASYFPU_FIELD_USER_TO_EMAIL_LABEL"
-			description="COM_EASYFPU_EASYFPU_FIELD_USER_TO_EMAIL_DESC"
-			default="0"
+		<field
+			name="format_decimal_separator"
+			type="list"
+			label="COM_EASYFPU_EASYFPU_FIELD_FORMAT_DECIMAL_SEPARATOR_LABEL"
+			description="COM_EASYFPU_EASYFPU_FIELD_FORMAT_DECIMAL_SEPARATOR_DESC"
+			default=","
 		>
+			<option value=".">.</option>
+			<option value=",">,</option>
+		</field>
+		<field
+			name="format_number_decimals"
+			type="integer"
+			label="COM_EASYFPU_EASYFPU_FIELD_FORMAT_DECIMALS_NUMBER_LABEL"
+			description="COM_EASYFPU_EASYFPU_FIELD_FORMAT_DECIMALS_NUMBER_DESC"
+			first="0"
+			last="3"
+			step="1"
+			default="1"
+		/>
+		<field
+			name="format_thousands_delimiter"
+			type="list"
+			label="COM_EASYFPU_EASYFPU_FIELD_FORMAT_THOUSANDS_DELIMITER_LABEL"
+			description="COM_EASYFPU_EASYFPU_FIELD_FORMAT_THOUSANDS_DELIMITER_DESC"
+			default="."
+		>
+			<option value="">COM_EASYFPU_EASYFPU_FIELD_FORMAT_THOUSANDS_DELIMITER_VALUE_NONE</option>
+			<option value=" ">COM_EASYFPU_EASYFPU_FIELD_FORMAT_THOUSANDS_DELIMITER_VALUE_SPACE</option>
+			<option value=",">,</option>
+			<option value=".">.</option>
 		</field>
 	</fieldset>
 	<fieldset

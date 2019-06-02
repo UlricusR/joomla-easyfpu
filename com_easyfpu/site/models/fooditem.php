@@ -59,6 +59,15 @@ class FoodItem {
     }
     
     /**
+     * Calculates the extended carbs (1 FPU = 10g extended carbs)
+     *
+     * @return double the extended carbs
+     */
+    public function getExtendedCarbs() {
+        return $this->fpus * 10;
+    }
+    
+    /**
      * @return int
      */
     public function getId()

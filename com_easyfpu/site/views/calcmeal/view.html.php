@@ -25,6 +25,9 @@ class EasyFPUViewCalcMeal extends HtmlView
     protected $foodItems = null;
     protected $meal = null;
     protected $absorptionScheme = null;
+    protected $decimalSeparator = '.';
+    protected $numberDecimals = 1;
+    protected $thousandsDelimiter = ',';
     
     /**
      * Display the CalcMeal view
@@ -35,9 +38,16 @@ class EasyFPUViewCalcMeal extends HtmlView
      */
     public function display($tpl = null)
     {
+        // Load FPU related data
         $this->foodItems = $this->get('FoodItems');
         $this->meal = $this->get('Meal');
         $this->absorptionScheme = $this->get('AbsorptionScheme');
+        
+        // Load formatting parameters
+        $params = Factory::getApplication()->getParams();
+        $this->decimalSeparator = $params->get('format_decimal_separator');
+        $this->numberDecimals = intval($params->get('format_number_decimals'));
+        $this->thousandsDelimiter = $params->get('format_thousands_delimiter');
         
         // Check for errors.
         if (count($errors = $this->get('Errors')))

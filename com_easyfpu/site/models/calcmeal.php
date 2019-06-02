@@ -30,16 +30,22 @@ class EasyFPUModelCalcMeal extends BaseDatabaseModel
     private $meal = null;
     private $absorptionScheme = null;
     
+    /**
+     * Constructor
+     * 
+     * @param array $config
+     */
     public function __construct($config = array()) {
         parent::__construct($config);
         
         // Load absorption scheme
-        $json = file_get_contents(JPATH_BASE . 'components/com_easyfpu/models/absorptionscheme_default.json');
+        $path = JPATH_BASE . '/components/com_easyfpu/models/absorptionscheme_default.json';
+        $json = file_get_contents($path);
         $absorptionScheme = json_decode($json);
         $absorptionBlocks = array();
         foreach ($absorptionScheme as $absorptionBlock) {
-            $maxFPU = intval($absorptionBlock['max_fpu']);
-            $absorptionTime = intval($absorptionBlock['absorption_time']);
+            $maxFPU = intval($absorptionBlock->max_fpu);
+            $absorptionTime = intval($absorptionBlock->absorption_time);
             array_push($absorptionBlocks, new AbsorptionBlock($maxFPU, $absorptionTime));
         }
         $this->absorptionScheme = new AbsorptionScheme($absorptionBlocks);
@@ -96,7 +102,7 @@ class EasyFPUModelCalcMeal extends BaseDatabaseModel
         if (isset($this->meal)) {
             return $this->meal;
         } else {
-            $this->meal = new Meal(\JText::_('COM_EASYFPU_YOURMEAL'), $this->getFoodItems());
+            $this->meal = new Meal(\JText::_('COM_EASYFPU_MEAL'), $this->getFoodItems());
             return $this->meal;
         }
     }

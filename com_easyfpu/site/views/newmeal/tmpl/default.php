@@ -33,7 +33,7 @@ $ids = array();
 				<?php echo JText::_('COM_EASYFPU_EASYFPUS_NAME'); ?>
 			</th>
 			<th width="38%">
-				<?php echo JText::_('COM_EASYFPU_AMOUNT'); ?>
+				<?php echo JText::_('COM_EASYFPU_AMOUNT'); ?>&nbsp;/&nbsp;<?php echo JText::_('COM_EASYFPU_UNIT_GRAMS'); ?>
 			</th>
 			<th width="2%">
 				<?php echo JText::_('COM_EASYFPU_ID'); ?>
