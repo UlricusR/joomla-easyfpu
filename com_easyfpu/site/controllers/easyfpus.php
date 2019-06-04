@@ -45,6 +45,6 @@ class EasyFPUControllerEasyFPUs extends AdminController {
         $this->checkToken();
         
         // Redirect to new food form
-        $this->setRedirect(\JRoute::_('index.php?option=com_easyfpu&view=easyfpu&layout=edit'));
+        $this->setRedirect(\JRoute::_('index.php?option=com_easyfpu&view=easyfpu'));
     }
 }

@@ -12,13 +12,14 @@ defined('_JEXEC') or die;
 
 // Imports
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Model\AdminModel;
 
 /**
  * EasyFPU Model
  *
  * @since  0.0.1
  */
-class EasyFPUModelEasyFPU extends JModelAdmin
+class EasyFPUModelEasyFPU extends AdminModel
 {
     /**
      * Method to get a table object, load it if necessary.

@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 
 // Imports
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Controller\FormController;
 
 /**
  * EasyFPU controller
@@ -20,7 +21,7 @@ use Joomla\CMS\Factory;
  * @subpackage com_easyfpu
  * @since 0.0.9
  */
-class EasyFPUControllerEasyFPU extends JControllerForm {
+class EasyFPUControllerEasyFPU extends FormController {
     /**
      * Implement to allowAdd or not
      *

@@ -38,7 +38,7 @@ class EasyFPUControllerEasyFPU extends FormController
         $id = isset( $data[ $key ] ) ? $data[ $key ] : 0;
         if( !empty( $id ) )
         {
-            return Factory::getUser()->authorise( "core.edit", "com_easyfpu.easyfpu." . $id );
+            return Factory::getUser()->authorise( "core.edit.own", "com_easyfpu.easyfpu." . $id );
         }
     }
     

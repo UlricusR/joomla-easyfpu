@@ -1,4 +1,7 @@
 <?php
+use Joomla\CMS\Log\Log;
+use Joomla\CMS\Language\Text;
+
 /**
  * @package     Joomla.Administrator
  * @subpackage  com_easyfpu
@@ -32,6 +35,11 @@ class FoodItem {
         
         // The carbs from fat and protein is the remainder
         $calFromFP = $this->getCalories() - $carbsCal;
+        
+        if ($calFromFP < 0) {
+            // Covers the case that calories from carbs exceed total calories
+            Log::add(Text::_('COM_EASYFPU_EASYFPU_ERRMSG_TOOMUCHCARBS') . ': ' . $name, Log::ERROR, 'jerror');
+        }
         
         // 100kcal makes 1 FPU
         $this->fpus = $calFromFP / 100;
