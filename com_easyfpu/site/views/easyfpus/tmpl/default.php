@@ -30,6 +30,11 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
 			</button>
 		</div>
 		<div class="btn-group">
+			<button type="button" class="btn" onclick="Joomla.submitbutton('easyfpus.export')">
+				<span class="icon-out"></span><?php echo JText::_('COM_EASYFPU_EXPORT') ?>
+			</button>
+		</div>
+		<div class="btn-group">
 			<button type="button" class="btn btn-success" onclick="Joomla.submitbutton('newmeal.newmeal')">
 				<span class="icon-rightarrow"></span><?php echo JText::_('COM_EASYFPU_NEWMEAL') ?>
 			</button>
