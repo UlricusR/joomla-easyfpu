@@ -12,13 +12,17 @@ defined('_JEXEC') or die;
 
 // Imports
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Language\Text;
 
 /**
  * EasyFPUs View
  * 
  * @since 0.0.1
  */
-class EasyFPUViewEasyFPUs extends JViewLegacy {
+class EasyFPUViewEasyFPUs extends HtmlView {
     /**
      * Display the EasyFPU view
      * 
@@ -41,7 +45,7 @@ class EasyFPUViewEasyFPUs extends JViewLegacy {
             $this->activeFilters 	= $this->get('ActiveFilters');
             
             // What Access Permissions does this user have? What can (s)he do?
-            $this->canDo = JHelperContent::getActions('com_easyfpu');
+            $this->canDo = ContentHelper::getActions('com_easyfpu');
             
             // Check for errors
             if (count($errors = $this->get('Errors'))) {
@@ -64,10 +68,10 @@ class EasyFPUViewEasyFPUs extends JViewLegacy {
     protected function setDocument()
     {
         $document = Factory::getDocument();
-        $document->setTitle(JText::_('COM_EASYFPU_SITE'));
-        $document->addScript(JURI::root() . $this->script);
-        $document->addScript(JURI::root() . "/administrator/components/com_easyfpu"
+        $document->setTitle(Text::_('COM_EASYFPU_SITE'));
+        $document->addScript(Uri::root() . $this->script);
+        $document->addScript(Uri::root() . "/administrator/components/com_easyfpu"
             . "/views/easyfpu/submitbutton.js");
-        JText::script('COM_EASYFPU_EASYFPU_ERROR_UNACCEPTABLE');
+        Text::script('COM_EASYFPU_EASYFPU_ERROR_UNACCEPTABLE');
     }
 }

@@ -12,6 +12,8 @@ defined('_JEXEC') or die;
 
 // Imports
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Controller\BaseController;
+use Joomla\CMS\Form\Form;
 
 // Set some global property
 $document = Factory::getDocument();
@@ -26,10 +28,10 @@ if (!Factory::getUser()->authorise('core.manage', 'com_easyfpu')) {
 JLoader::register('EasyFPUHelper', JPATH_COMPONENT . '/helpers/easyfpu.php');
 
 // Add rule path
-JForm::addRulePath('administrator/components/com_easyfpu/models/rules');
+Form::addRulePath('administrator/components/com_easyfpu/models/rules');
 
 // Get an instance of the controller prefixed by EasyFPU
-$controller = JControllerLegacy::getInstance('EasyFPU');
+$controller = BaseController::getInstance('EasyFPU');
 
 // Perform the Request Task
 $controller->execute(Factory::getApplication()->input->get('task'));

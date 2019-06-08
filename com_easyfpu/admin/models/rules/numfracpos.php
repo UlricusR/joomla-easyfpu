@@ -10,10 +10,13 @@
 // No direct access
 defined('_JEXEC') or die;
 
+// Imports
+use Joomla\CMS\Form\FormRule;
+
 /**
  * Form Rule class for the Joomla Framework.
  */
-class JFormRuleNumfracpos extends JFormRule
+class JFormRuleNumfracpos extends FormRule
 {
     /**
      * The regular expression.

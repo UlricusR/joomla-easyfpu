@@ -12,9 +12,11 @@ defined('_JEXEC') or die;
 
 // Imports
 use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Router\Route;
 
 
-JHtml::_('behavior.formvalidator');
+HTMLHelper::_('behavior.formvalidator');
 
 // The following is to enable setting the permission's Calculated Setting
 // when you change the permission's Setting.
@@ -28,14 +30,14 @@ Factory::getDocument()->addScriptDeclaration('
 ');
 
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_easyfpu&layout=edit&id=' . (int) $this->item->id); ?>"
+<form action="<?php echo Route::_('index.php?option=com_easyfpu&layout=edit&id=' . (int) $this->item->id); ?>"
     method="post" name="adminForm" id="adminForm" class="form-validate">
     
     <input id="jform_title" type="hidden" name="easyfpu-fooditem-title"/>
     
     <div class="form-horizontal">
-    	<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
-    	<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', 
+    	<?php echo HTMLHelper::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
+    	<?php echo HTMLHelper::_('bootstrap.addTab', 'myTab', 'details', 
             empty($this->item->id) ? JText::_('COM_EASYFPU_TAB_NEW_FOODITEM') : JText::_('COM_EASYFPU_TAB_EDIT_FOODITEM')); ?>
         	<fieldset class="adminform">
             	<legend><?php echo JText::_('COM_EASYFPU_LEGEND_DETAILS') ?></legend>
@@ -45,9 +47,9 @@ Factory::getDocument()->addScriptDeclaration('
                 	</div>
             	</div>
         	</fieldset>
-    	<?php echo JHtml::_('bootstrap.endTab'); ?>
+    	<?php echo HTMLHelper::_('bootstrap.endTab'); ?>
 
-    	<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'params', JText::_('COM_EASYFPU_TAB_PARAMS')); ?>
+    	<?php echo HTMLHelper::_('bootstrap.addTab', 'myTab', 'params', JText::_('COM_EASYFPU_TAB_PARAMS')); ?>
         	<fieldset class="adminform">
             	<legend><?php echo JText::_('COM_EASYFPU_LEGEND_PARAMS') ?></legend>
             	<div class="row-fluid">
@@ -56,9 +58,9 @@ Factory::getDocument()->addScriptDeclaration('
                 	</div>
             	</div>
         	</fieldset>
-    	<?php echo JHtml::_('bootstrap.endTab'); ?>
+    	<?php echo HTMLHelper::_('bootstrap.endTab'); ?>
 
-    	<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'permissions', JText::_('COM_EASYFPU_TAB_PERMISSIONS')); ?>
+    	<?php echo HTMLHelper::_('bootstrap.addTab', 'myTab', 'permissions', JText::_('COM_EASYFPU_TAB_PERMISSIONS')); ?>
         	<fieldset class="adminform">
             	<legend><?php echo JText::_('COM_EASYFPU_LEGEND_PERMISSIONS') ?></legend>
             	<div class="row-fluid">
@@ -67,9 +69,9 @@ Factory::getDocument()->addScriptDeclaration('
                 	</div>
             	</div>
         	</fieldset>
-    	<?php echo JHtml::_('bootstrap.endTab'); ?>
-    	<?php echo JHtml::_('bootstrap.endTabSet'); ?>
+    	<?php echo HTMLHelper::_('bootstrap.endTab'); ?>
+    	<?php echo HTMLHelper::_('bootstrap.endTabSet'); ?>
     </div>
     <input type="hidden" name="task" value="easyfpu.edit" />
-    <?php echo JHtml::_('form.token'); ?>
+    <?php echo HTMLHelper::_('form.token'); ?>
 </form>

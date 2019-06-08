@@ -10,10 +10,14 @@
 // No direct access
 defined('_JEXEC') or die;
 
-JHtml::_('behavior.formvalidator');
+// Imports
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Router\Route;
+
+HTMLHelper::_('behavior.formvalidator');
 
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_easyfpu&view=easyfpu&layout=edit'); ?>"
+<form action="<?php echo Route::_('index.php?option=com_easyfpu&view=easyfpu&layout=edit'); ?>"
     method="post" name="adminForm" id="adminForm" class="form-validate">
 
 	<div class="form-horizontal">
@@ -41,5 +45,5 @@ JHtml::_('behavior.formvalidator');
 	</div>
 
 	<input type="hidden" name="task" />
-	<?php echo JHtml::_('form.token'); ?>
+	<?php echo HTMLHelper::_('form.token'); ?>
 </form>

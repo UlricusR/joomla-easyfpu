@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 // Imports
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\AdminModel;
+use Joomla\CMS\Table\Table;
 
 /**
  * EasyFPU Model
@@ -28,13 +29,13 @@ class EasyFPUModelEasyFPU extends AdminModel
      * @param   string  $prefix  The class prefix. Optional.
      * @param   array   $config  Configuration array for model. Optional.
      *
-     * @return  JTable  A JTable object
+     * @return  Table  A JTable object
      *
      * @since   1.6
      */
     public function getTable($type = 'EasyFPU', $prefix = 'EasyFPUTable', $config = array())
     {
-        return JTable::getInstance($type, $prefix, $config);
+        return Table::getInstance($type, $prefix, $config);
     }
     
     /**

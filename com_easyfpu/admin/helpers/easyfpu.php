@@ -1,6 +1,4 @@
 <?php
-use Joomla\CMS\Factory;
-
 /**
  * @package     Joomla.Administrator
  * @subpackage  com_easyfpu
@@ -12,6 +10,10 @@ use Joomla\CMS\Factory;
 // No direct access
 defined('_JEXEC') or die;
 
+// Imports
+use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Factory;
+
 /**
  * EasyFPU component helper.
  *
@@ -21,7 +23,7 @@ defined('_JEXEC') or die;
  *
  * @since   1.6
  */
-abstract class EasyFPUHelper extends JHelperContent
+abstract class EasyFPUHelper extends ContentHelper
 {
     /**
      * Configure the Linkbar.
@@ -44,7 +46,7 @@ abstract class EasyFPUHelper extends JHelperContent
             );
         
         // Set some global property
-        $document = JFactory::getDocument();
+        $document = Factory::getDocument();
         $document->addStyleDeclaration('.icon-48-easyfpu ' .
             '{background-image: url(../media/com_easyfpu/images/easyfpu-48x48.png);}');
         if ($submenu == 'categories')

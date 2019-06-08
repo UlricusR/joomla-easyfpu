@@ -1,6 +1,4 @@
 <?php
-use Joomla\CMS\Factory;
-
 /**
  * @package     Joomla.Administrator
  * @subpackage  com_easyfpu
@@ -12,7 +10,12 @@ use Joomla\CMS\Factory;
 // No direct access
 defined('_JEXEC') or die;
 
-JFormHelper::loadFieldClass('list');
+// Imports
+use Joomla\CMS\Factory;
+use Joomla\CMS\Form\FormHelper;
+use Joomla\CMS\HTML\HTMLHelper;
+
+FormHelper::loadFieldClass('list');
 
 /**
  * EasyFPU Form Field class for the EasyFPU component
@@ -46,7 +49,7 @@ class JFormFieldEasyFPU extends JFormFieldList {
         
         if ($fooditems) {
             foreach ($fooditems as $fooditem) {
-                $options[] = JHtml::_('select.option', $fooditem->id, $fooditem->name .
+                $options[] = HTMLHelper::_('select.option', $fooditem->id, $fooditem->name .
                     ($fooditem->catid ? ' (' . $fooditem->category . ')' : ''));
             }
         }

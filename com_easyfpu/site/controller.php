@@ -10,11 +10,14 @@
 // No direct access
 defined('_JEXEC') or die;
 
+// Imports
+use Joomla\CMS\MVC\Controller\BaseController;
+
 /**
  * EasyFPU component controller
  * 
  * @since 0.1.0
  */
-class EasyFPUController extends JControllerLegacy {
+class EasyFPUController extends BaseController {
     
 }

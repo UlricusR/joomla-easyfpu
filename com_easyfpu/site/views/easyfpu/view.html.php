@@ -12,13 +12,16 @@ defined('_JEXEC') or die;
 
 // Imports
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Uri\Uri;
 
 /**
  * EasyFPU View
  * This is the site view presenting the user with the ability to add a new EasyFPU record
  *
  */
-class EasyFPUViewEasyFPU extends JViewLegacy
+class EasyFPUViewEasyFPU extends HtmlView
 {
     
     protected $form = null;
@@ -39,7 +42,7 @@ class EasyFPUViewEasyFPU extends JViewLegacy
         $this->script = $this->get('Script');
         
         // Check that the user has permissions to create a new easyfpu record
-        $this->canDo = JHelperContent::getActions('com_easyfpu');
+        $this->canDo = ContentHelper::getActions('com_easyfpu');
         if (!($this->canDo->get('core.create')))
         {
             $app = Factory::getApplication();
@@ -72,8 +75,8 @@ class EasyFPUViewEasyFPU extends JViewLegacy
         $document = Factory::getDocument();
         $document->setTitle($isNew ? JText::_('COM_EASYFPU_EASYFPU_CREATING') :
             JText::_('COM_EASYFPU_EASYFPU_EDITING'));
-        $document->addScript(JURI::root() . $this->script);
-        $document->addScript(JURI::root() . "/components/com_easyfpu"
+        $document->addScript(Uri::root() . $this->script);
+        $document->addScript(Uri::root() . "/components/com_easyfpu"
             . "/views/easyfpu/submitbutton.js");
         JText::script('COM_EASYFPU_EASYFPU_ERROR_UNACCEPTABLE');
     }

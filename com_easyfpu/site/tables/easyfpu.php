@@ -10,12 +10,17 @@
 // No direct access
 defined('_JEXEC') or die;
 
+// Imports
+use Joomla\CMS\Table\Table;
+use Joomla\Registry\Registry;
+use Joomla\CMS\Access\Rules;
+
 /**
  * FPU Table class
  *
  * @since  0.0.1
  */
-class EasyFPUTableEasyFPU extends JTable {
+class EasyFPUTableEasyFPU extends Table {
     /**
      * Constructor
      * 
@@ -37,14 +42,14 @@ class EasyFPUTableEasyFPU extends JTable {
     {
         if (isset($array['params']) && is_array($array['params'])) {
             // Convert the params field to a string.
-            $parameter = new JRegistry;
+            $parameter = new Registry();
             $parameter->loadArray($array['params']);
             $array['params'] = (string)$parameter;
         }
         
         // Bind the rules.
         if (isset($array['rules']) && is_array($array['rules'])) {
-            $rules = new JAccessRules($array['rules']);
+            $rules = new Rules($array['rules']);
             $this->setRules($rules);
         }
         
@@ -79,9 +84,9 @@ class EasyFPUTableEasyFPU extends JTable {
      *
      * @return	int
      */
-    protected function _getAssetParentId(JTable $table = NULL, $id = NULL) {
+    protected function _getAssetParentId(Table $table = NULL, $id = NULL) {
         // We will retrieve the parent-asset from the Asset-table
-        $assetParent = JTable::getInstance('Asset');
+        $assetParent = Table::getInstance('Asset');
         // Default: if no asset-parent can be found we take the global asset
         $assetParentId = $assetParent->getRootId();
         

@@ -10,11 +10,15 @@
 // No direct access
 defined('_JEXEC') or die;
 
+// Imports
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Router\Route;
+
 $ids = array();
 
-\JHtml::_('behavior.formvalidator');
+HTMLHelper::_('behavior.formvalidator');
 ?>
-<form action="<?php \JRoute::_('index.php?option=com_easyfpu&view=newmeal'); ?>" method="post" id="adminForm" name="adminForm">
+<form action="<?php Route::_('index.php?option=com_easyfpu&view=newmeal'); ?>" method="post" id="adminForm" name="adminForm">
 
 	<!-- The toolbar -->
 	<div class="btn-toolbar">
@@ -76,5 +80,5 @@ $ids = array();
 	</table>
 	<input type="hidden" name="task" value=""/>
 	<input type="hidden" name="ids" value="<?php echo implode(',', $ids); ?>">
-    <?php echo JHtml::_('form.token'); ?>
+    <?php echo HTMLHelper::_('form.token'); ?>
 </form>

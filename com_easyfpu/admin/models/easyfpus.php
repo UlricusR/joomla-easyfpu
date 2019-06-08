@@ -12,13 +12,14 @@ defined('_JEXEC') or die;
 
 // Imports
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Model\ListModel;
 
 /**
  * EasyFPU List Model
  * 
  * @since 0.0.1
  */
-class EasyFPUModelEasyFPUs extends JModelList {
+class EasyFPUModelEasyFPUs extends ListModel {
     /**
      * Constructor.
      *

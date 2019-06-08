@@ -12,13 +12,17 @@ defined('_JEXEC') or die;
 
 // Imports
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 
 /**
  * EasyFPUs View
  * 
  * @since 0.0.1
  */
-class EasyFPUViewEasyFPUs extends JViewLegacy {
+class EasyFPUViewEasyFPUs extends HtmlView {
     /**
      * Display the EasyFPU view
      * 
@@ -27,10 +31,6 @@ class EasyFPUViewEasyFPUs extends JViewLegacy {
      * @return void
      */
     function display($tpl = null) {
-        // Get application
-        $app = Factory::getApplication();
-        $context = "easyfpu.list.admin.easyfpu";
-        
         // Get data from the model
         $this->items            = $this->get('Items');
         $this->pagination       = $this->get('Pagination');
@@ -39,7 +39,7 @@ class EasyFPUViewEasyFPUs extends JViewLegacy {
         $this->activeFilters 	= $this->get('ActiveFilters');
         
         // What Access Permissions does this user have? What can (s)he do?
-        $this->canDo = JHelperContent::getActions('com_easyfpu');
+        $this->canDo = ContentHelper::getActions('com_easyfpu');
         
         // Check for errors
         if (count($errors = $this->get('Errors'))) {
@@ -67,30 +67,30 @@ class EasyFPUViewEasyFPUs extends JViewLegacy {
      * @since 0.0.8
      */
     protected function addToolBar() {
-        $title = JText::_('COM_EASYFPU_MANAGER_EASYFPUS');
+        $title = Text::_('COM_EASYFPU_MANAGER_EASYFPUS');
         
         if ($this->pagination->total)
         {
             $title .= "<span style='font-size: 0.5em; vertical-align: middle;'>(" . $this->pagination->total . ")</span>";
         }
         
-        JToolbarHelper::title($title);
+        ToolbarHelper::title($title);
         
         if ($this->canDo->get('core.create')) {
-            JToolbarHelper::addNew('easyfpu.add', 'JTOOLBAR_NEW');
+            ToolbarHelper::addNew('easyfpu.add', 'JTOOLBAR_NEW');
         }
         
         if ($this->canDo->get('core.edit')) {
-            JToolbarHelper::editList('easyfpu.edit', 'JTOOLBAR_EDIT');
+            ToolbarHelper::editList('easyfpu.edit', 'JTOOLBAR_EDIT');
         }
         
         if ($this->canDo->get('core.delete')) {
-            JToolbarHelper::deleteList('', 'easyfpus.delete', 'JTOOLBAR_DELETE');
+            ToolbarHelper::deleteList('', 'easyfpus.delete', 'JTOOLBAR_DELETE');
         }
         
         if ($this->canDo->get('core.admin')) {
-            JToolBarHelper::divider();
-            JToolbarHelper::preferences('com_easyfpu');
+            ToolbarHelper::divider();
+            ToolbarHelper::preferences('com_easyfpu');
         }
     }
     

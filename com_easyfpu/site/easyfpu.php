@@ -12,9 +12,10 @@ defined('_JEXEC') or die;
 
 // Imports
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Controller\BaseController;
 
 // Get an instance of the controller prefixed by EasyFPU
-$controller = JControllerLegacy::getInstance('EasyFPU');
+$controller = BaseController::getInstance('EasyFPU');
 
 // Perform the requested task; if no task is set, the default task 'display' will be assumed.
 // When display is used, the 'view' variable will decide what will be displayed.

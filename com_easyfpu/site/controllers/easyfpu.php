@@ -13,6 +13,10 @@ defined('_JEXEC') or die;
 // Imports
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Controller\FormController;
+use Joomla\CMS\Session\Session;
+use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Language\Text;
 
 /**
  * EasyFPU Controller
@@ -48,8 +52,8 @@ class EasyFPUControllerEasyFPU extends FormController
         
         // set up the redirect back to the same form
         $this->setRedirect(
-            JRoute::_('index.php?option=com_easyfpu&view=easyfpus'),
-            JText::_('COM_EASYFPU_ADD_CANCELLED')
+            Route::_('index.php?option=com_easyfpu&view=easyfpus'),
+            Text::_('COM_EASYFPU_ADD_CANCELLED')
         );
     }
     
@@ -60,7 +64,7 @@ class EasyFPUControllerEasyFPU extends FormController
     public function save($key = null, $urlVar = null)
     {
         // Check for request forgeries.
-        JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+        Session::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
         
         $app = Factory::getApplication();
         $input = $app->input;
@@ -68,8 +72,8 @@ class EasyFPUControllerEasyFPU extends FormController
         
         // Get the current URI to set in redirects. As we're handling a POST,
         // this URI comes from the <form action="..."> attribute in the layout file above
-        $currentUri = (string)JUri::getInstance();
-        $redirectUri = JRoute::_('index.php?option=com_easyfpu&view=easyfpus');
+        $currentUri = (string)Uri::getInstance();
+        $redirectUri = Route::_('index.php?option=com_easyfpu&view=easyfpus');
         
         // Check that this user is allowed to add a new record
         if (!Factory::getUser()->authorise( "core.create", "com_easyfpu"))

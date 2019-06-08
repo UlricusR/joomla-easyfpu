@@ -10,12 +10,18 @@
 // No direct access
 defined('_JEXEC') or die;
 
-JHtml::_('formbehavior.chosen', 'select');
+// Imports
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Layout\LayoutHelper;
+use Joomla\CMS\Language\Text;
+
+HTMLHelper::_('formbehavior.chosen', 'select');
 
 $listOrder     = $this->escape($this->state->get('list.ordering'));
 $listDirn      = $this->escape($this->state->get('list.direction'));
 ?>
-<form action="<?php \JRoute::_('index.php?option=com_easyfpu&view=easyfpus'); ?>" method="post" id="adminForm" name="adminForm">
+<form action="<?php Route::_('index.php?option=com_easyfpu&view=easyfpus'); ?>" method="post" id="adminForm" name="adminForm">
 
 	<!-- The toolbar -->
 	<div class="btn-toolbar">
@@ -44,9 +50,9 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
 	<!-- The search field -->
 	<div class="row-fluid">
 		<div class="span12">
-			<?php echo JText::_('COM_EASYFPU_EASYFPUS_FILTER'); ?>
+			<?php echo Text::_('COM_EASYFPU_EASYFPUS_FILTER'); ?>
 			<?php
-				echo JLayoutHelper::render(
+				echo LayoutHelper::render(
 					'joomla.searchtools.default',
 					array('view' => $this)
 				);
@@ -59,16 +65,16 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
 		<thead>
 		<tr>
 			<th width="1%">
-				<?php echo JText::_('COM_EASYFPU_NUM'); ?>
+				<?php echo Text::_('COM_EASYFPU_NUM'); ?>
 			</th>
 			<th width="2%">
-				<?php echo JHtml::_('grid.checkall'); ?>
+				<?php echo HTMLHelper::_('grid.checkall'); ?>
 			</th>
 			<th width="95%">
-				<?php echo JHtml::_('grid.sort', 'COM_EASYFPU_EASYFPUS_NAME', 'name', $listDirn, $listOrder); ?>
+				<?php echo HTMLHelper::_('grid.sort', 'COM_EASYFPU_EASYFPUS_NAME', 'name', $listDirn, $listOrder); ?>
 			</th>
 			<th width="2%">
-				<?php echo JHtml::_('grid.sort', 'COM_EASYFPU_ID', 'id', $listDirn, $listOrder); ?>
+				<?php echo HTMLHelper::_('grid.sort', 'COM_EASYFPU_ID', 'id', $listDirn, $listOrder); ?>
 			</th>
 		</tr>
 		</thead>
@@ -82,14 +88,14 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
 		<tbody>
 			<?php if (!empty($this->items)) : ?>
 				<?php foreach ($this->items as $i => $row) :
-				    $link = JRoute::_('index.php?option=com_easyfpu&task=easyfpu.edit&id=' . $row->id);
+				    $link = Route::_('index.php?option=com_easyfpu&task=easyfpu.edit&id=' . $row->id);
 				?>
 					<tr>
 						<td>
 							<?php echo $this->pagination->getRowOffset($i); ?>
 						</td>
 						<td>
-							<?php echo JHtml::_('grid.id', $i, $row->id); ?>
+							<?php echo HTMLHelper::_('grid.id', $i, $row->id); ?>
 						</td>
 						<td>
 							<a href="<?php echo $link; ?>" title="<?php echo JText::_('COM_EASYFPU_EDIT_EASYFPU'); ?>">
@@ -108,5 +114,5 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
 	<input type="hidden" name="boxchecked" value="0"/>
 	<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>"/>
 	<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>"/>
-    <?php echo JHtml::_('form.token'); ?>
+    <?php echo HTMLHelper::_('form.token'); ?>
 </form>

@@ -14,6 +14,8 @@ defined('_JEXEC') or die;
 use Joomla\CMS\MVC\Controller\AdminController;
 use Joomla\Utilities\ArrayHelper;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Log\Log;
 
 /**
  * EasyFPUs controller
@@ -45,7 +47,7 @@ class EasyFPUControllerEasyFPUs extends AdminController {
         $this->checkToken();
         
         // Redirect to new food form
-        $this->setRedirect(\JRoute::_('index.php?option=com_easyfpu&view=easyfpu'));
+        $this->setRedirect(Route::_('index.php?option=com_easyfpu&view=easyfpu'));
     }
 
     public function export($key = null)
@@ -58,8 +60,8 @@ class EasyFPUControllerEasyFPUs extends AdminController {
         
         if (!is_array($cid) || count($cid) < 1)
         {
-            \JLog::add(\JText::_('COM_EASYFPU_NO_ITEM_SELECTED'), \JLog::WARNING, 'jerror');
-            $this->setRedirect(\JRoute::_('index.php?option=com_easyfpu&view=easyfpus'));
+            Log::add(\JText::_('COM_EASYFPU_NO_ITEM_SELECTED'), Log::WARNING, 'jerror');
+            $this->setRedirect(Route::_('index.php?option=com_easyfpu&view=easyfpus'));
         }
         else
         {

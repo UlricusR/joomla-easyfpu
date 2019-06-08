@@ -10,6 +10,9 @@
 // No direct access
 defined('_JEXEC') or die;
 
+// Imports
+use Joomla\CMS\MVC\Controller\BaseController;
+
 /**
  * General Controller of EasyFPU component
  *
@@ -17,7 +20,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_easyfpu
  * @since       0.0.7
  */
-class EasyFPUController extends JControllerLegacy
+class EasyFPUController extends BaseController
 {
     /**
      * The default view for the display method.
