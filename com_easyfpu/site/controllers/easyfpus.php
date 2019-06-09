@@ -12,10 +12,7 @@ defined('_JEXEC') or die;
 
 // Imports
 use Joomla\CMS\MVC\Controller\AdminController;
-use Joomla\Utilities\ArrayHelper;
-use Joomla\CMS\Factory;
 use Joomla\CMS\Router\Route;
-use Joomla\CMS\Log\Log;
 
 /**
  * EasyFPUs controller
@@ -48,27 +45,5 @@ class EasyFPUControllerEasyFPUs extends AdminController {
         
         // Redirect to new food form
         $this->setRedirect(Route::_('index.php?option=com_easyfpu&view=easyfpu'));
-    }
-
-    public function export($key = null)
-    {
-        // Check for request forgeries
-        $this->checkToken();
-        
-        // Get items to use for new meal
-        $cid = $this->input->get('cid', array(), 'array');
-        
-        if (!is_array($cid) || count($cid) < 1)
-        {
-            Log::add(\JText::_('COM_EASYFPU_NO_ITEM_SELECTED'), Log::WARNING, 'jerror');
-            $this->setRedirect(Route::_('index.php?option=com_easyfpu&view=easyfpus'));
-        }
-        else
-        {
-            // Make sure the item ids are integers
-            $cid = ArrayHelper::toInteger($cid);
-            
-            // TODO Implement export
-        }
     }
 }

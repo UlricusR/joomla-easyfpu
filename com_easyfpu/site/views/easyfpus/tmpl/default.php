@@ -36,7 +36,7 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
 			</button>
 		</div>
 		<div class="btn-group">
-			<button type="button" class="btn" onclick="Joomla.submitbutton('easyfpus.export')">
+			<button type="button" class="btn" onclick="Joomla.submitbutton('export.export')">
 				<span class="icon-out"></span><?php echo JText::_('COM_EASYFPU_EXPORT') ?>
 			</button>
 		</div>
