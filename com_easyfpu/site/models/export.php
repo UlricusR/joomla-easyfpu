@@ -25,37 +25,42 @@ use Joomla\CMS\Router\Route;
  */
 class EasyFPUModelCalcMeal extends BaseDatabaseModel
 {
-    /**
-     * Proxy for getModel.
-     *
-     * @param   string  $name    The model name. Optional.
-     * @param   string  $prefix  The class prefix. Optional.
-     * @param   array   $config  Configuration array for model. Optional.
-     *
-     * @return  object  The model.
-     *
-     * @since   1.6
-     */
-    public function getModel($name = 'Export', $prefix = 'EasyFPUModel', $config = array('ignore_request' => true))
+    public function getJsonFile()
     {
-        $model = parent::getModel($name, $prefix, $config);
+        // Get the ids
+        $ids = $this->getState('ids');
         
-        return $model;
-    }
-    
-    public function export($key = null)
-    {
-            // Generate JSON file
-            $json_array = generateJson($cid);
-            
-            // Get the document object.
-            $document = Factory::getDocument();
-
-            // TODO Implement
-            
-            // Output the JSON data.
-            echo json_encode($json_array);
+        // Get the user
+        $user = Factory::getUser();
+        
+        // Load the food item from the database
+        $db = Factory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('*')
+            ->from($db->quoteName('#__easyfpu'))
+            ->where('created_by = ' . $user->id)
+            ->andWhere('id IN (' . implode(',', $ids) .')');
+        $db->setQuery($query);
+        $results = $db->loadObjectList();
+        
+        // Create the json object
+        $foodItems = array();
+        foreach ($results as $result) {
+            $id = intval($result->id);
+            $name = $result->name;
+            $caloriesPer100g = doubleval($result->calories);
+            $carbsPer100g = doubleval($result->carbs);
+            $amount = intval($amounts[$id]);
+            $foodItem = new FoodItem($id, $amount, $name, $caloriesPer100g, $carbsPer100g);
+            array_push($foodItems, $foodItem);
         }
+        
+        // Set the food items
+        $this->foodItems = $foodItems;
+        return $foodItems;
+            
+        // Output the JSON data.
+        echo json_encode($json_array);
     }
     
     private function generateJson($ids) {

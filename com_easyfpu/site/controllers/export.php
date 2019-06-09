@@ -59,7 +59,15 @@ class EasyFPUModelCalcMeal extends BaseDatabaseModel
             // Make sure the item ids are integers
             $cid = ArrayHelper::toInteger($cid);
             
-            // TODO Implement
+            if ($view = $this->getView('Export', 'html', 'EasyFPUView')) {
+                // Set to export model
+                $model = $this->getModel();
+                $model->setState('ids', $cid);
+                $view->setModel($model, true);
+                
+                // Call view
+                $view->display();
+            }
         }
     }
 }
