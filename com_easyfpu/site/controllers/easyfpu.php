@@ -64,7 +64,7 @@ class EasyFPUControllerEasyFPU extends FormController
     public function save($key = null, $urlVar = null)
     {
         // Check for request forgeries.
-        Session::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+        Session::checkToken() or jexit(Text::_('JINVALID_TOKEN'));
         
         $app = Factory::getApplication();
         $input = $app->input;
@@ -78,7 +78,7 @@ class EasyFPUControllerEasyFPU extends FormController
         // Check that this user is allowed to add a new record
         if (!Factory::getUser()->authorise( "core.create", "com_easyfpu"))
         {
-            $app->enqueueMessage(JText::_('JERROR_ALERTNOAUTHOR'), 'error');
+            $app->enqueueMessage(Text::_('JERROR_ALERTNOAUTHOR'), 'error');
             $app->setHeader('status', 403, true);
             
             return;
@@ -147,7 +147,7 @@ class EasyFPUControllerEasyFPU extends FormController
             $app->setUserState($context . '.data', $validData);
             
             // Redirect back to the edit screen.
-            $this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_SAVE_FAILED', $model->getError()));
+            $this->setError(Text::sprintf('JLIB_APPLICATION_ERROR_SAVE_FAILED', $model->getError()));
             $this->setMessage($this->getError(), 'error');
             
             $this->setRedirect($currentUri);
@@ -160,7 +160,7 @@ class EasyFPUControllerEasyFPU extends FormController
         
         $this->setRedirect(
             $redirectUri,
-            JText::_('COM_EASYFPU_ADD_SUCCESSFUL')
+            Text::_('COM_EASYFPU_ADD_SUCCESSFUL')
         );
         
         return true;

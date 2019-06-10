@@ -74,8 +74,6 @@ class EasyFPUViewCalcMeal extends HtmlView
         $document = Factory::getDocument();
         $document->setTitle(Text::_('COM_EASYFPU_YOURMEAL'));
         $document->addScript(Uri::root() . $this->script);
-        $document->addScript(Uri::root() . "/components/com_easyfpu"
-            . "/views/easyfpu/submitbutton.js");
-        JText::script('COM_EASYFPU_EASYFPU_ERROR_UNACCEPTABLE');
+        $document->addStyleSheet(Uri::root() . 'components/com_easyfpu/css/easyfpu.css');
     }
 }

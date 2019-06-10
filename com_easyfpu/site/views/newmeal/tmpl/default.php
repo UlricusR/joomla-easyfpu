@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 // Imports
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Language\Text;
 
 $ids = array();
 
@@ -24,7 +25,7 @@ HTMLHelper::_('behavior.formvalidator');
 	<div class="btn-toolbar">
 		<div class="btn-group">
 			<button type="button" class="btn btn-success" onclick="Joomla.submitbutton('calcmeal.calcmeal')">
-				<span class="icon-rightarrow"></span><?php echo JText::_('COM_EASYFPU_NEWMEAL') ?>
+				<span class="icon-rightarrow"></span><?php echo Text::_('COM_EASYFPU_NEWMEAL') ?>
 			</button>
 		</div>
 	</div>
@@ -34,13 +35,13 @@ HTMLHelper::_('behavior.formvalidator');
 		<thead>
 		<tr>
 			<th width="60%">
-				<?php echo JText::_('COM_EASYFPU_EASYFPUS_NAME'); ?>
+				<?php echo Text::_('COM_EASYFPU_EASYFPUS_NAME'); ?>
 			</th>
 			<th width="38%">
-				<?php echo JText::_('COM_EASYFPU_AMOUNT'); ?>&nbsp;/&nbsp;<?php echo JText::_('COM_EASYFPU_UNIT_GRAMS'); ?>
+				<?php echo Text::_('COM_EASYFPU_AMOUNT'); ?>&nbsp;/&nbsp;<?php echo Text::_('COM_EASYFPU_UNIT_GRAMS'); ?>
 			</th>
 			<th width="2%">
-				<?php echo JText::_('COM_EASYFPU_ID'); ?>
+				<?php echo Text::_('COM_EASYFPU_ID'); ?>
 			</th>
 		</tr>
 		</thead>
@@ -55,13 +56,13 @@ HTMLHelper::_('behavior.formvalidator');
 							<input name="amount<?php echo $row->id; ?>" list="typicalvalues<?php echo $row->id; ?>">
 							<datalist id="typicalvalues<?php echo $row->id; ?>">
             			    	<?php if ($row->amount_small > 0) { ?>
-            			    		<option value="<?php echo $row->amount_small; ?>"><?php echo (isset($row->comment_small) && $row->comment_small <> '') ? $row->comment_small : \JText::_('COM_EASYFPU_COMMENT_SMALL_DEFAULT'); ?></option>
+            			    		<option value="<?php echo $row->amount_small; ?>"><?php echo (isset($row->comment_small) && $row->comment_small <> '') ? $row->comment_small : Text::_('COM_EASYFPU_COMMENT_SMALL_DEFAULT'); ?></option>
             			    	<?php } ?>
             			    	<?php if ($row->amount_medium > 0) { ?>
-            			    		<option value="<?php echo $row->amount_medium; ?>"><?php echo (isset($row->comment_medium) && $row->comment_medium <> '') ? $row->comment_medium : \JText::_('COM_EASYFPU_COMMENT_MEDIUM_DEFAULT'); ?></option>
+            			    		<option value="<?php echo $row->amount_medium; ?>"><?php echo (isset($row->comment_medium) && $row->comment_medium <> '') ? $row->comment_medium : Text::_('COM_EASYFPU_COMMENT_MEDIUM_DEFAULT'); ?></option>
             			    	<?php } ?>
             			    	<?php if ($row->amount_large > 0) { ?>
-            			    		<option value="<?php echo $row->amount_large; ?>"><?php echo (isset($row->comment_large) && $row->comment_large <> '') ? $row->comment_large : \JText::_('COM_EASYFPU_COMMENT_LARGE_DEFAULT'); ?></option>
+            			    		<option value="<?php echo $row->amount_large; ?>"><?php echo (isset($row->comment_large) && $row->comment_large <> '') ? $row->comment_large : Text::_('COM_EASYFPU_COMMENT_LARGE_DEFAULT'); ?></option>
             			    	<?php } ?>
 							</datalist>
 						</td>

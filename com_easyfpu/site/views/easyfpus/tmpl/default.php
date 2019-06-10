@@ -27,22 +27,22 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
 	<div class="btn-toolbar">
 		<div class="btn-group">
 			<button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('easyfpus.new')">
-				<span class="icon-new"></span><?php echo JText::_('JNEW') ?>
+				<span class="icon-new"></span><?php echo Text::_('JNEW') ?>
 			</button>
 		</div>
 		<div class="btn-group">
 			<button type="button" class="btn" onclick="Joomla.submitbutton('easyfpus.delete')">
-				<span class="icon-trash"></span><?php echo JText::_('JACTION_DELETE') ?>
+				<span class="icon-trash"></span><?php echo Text::_('JACTION_DELETE') ?>
 			</button>
 		</div>
 		<div class="btn-group">
 			<button type="button" class="btn" onclick="Joomla.submitbutton('export.export')">
-				<span class="icon-out"></span><?php echo JText::_('COM_EASYFPU_EXPORT') ?>
+				<span class="icon-out"></span><?php echo Text::_('COM_EASYFPU_EXPORT') ?>
 			</button>
 		</div>
 		<div class="btn-group">
 			<button type="button" class="btn btn-success" onclick="Joomla.submitbutton('newmeal.newmeal')">
-				<span class="icon-rightarrow"></span><?php echo JText::_('COM_EASYFPU_NEWMEAL') ?>
+				<span class="icon-rightarrow"></span><?php echo Text::_('COM_EASYFPU_NEWMEAL') ?>
 			</button>
 		</div>
 	</div>
@@ -98,7 +98,7 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
 							<?php echo HTMLHelper::_('grid.id', $i, $row->id); ?>
 						</td>
 						<td>
-							<a href="<?php echo $link; ?>" title="<?php echo JText::_('COM_EASYFPU_EDIT_EASYFPU'); ?>">
+							<a href="<?php echo $link; ?>" title="<?php echo Text::_('COM_EASYFPU_EDIT_EASYFPU'); ?>">
 								<?php echo $row->name; ?>
 							</a>
  						</td>

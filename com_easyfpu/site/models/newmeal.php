@@ -14,6 +14,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\ListModel;
 use Joomla\CMS\Log\Log;
+use Joomla\CMS\Language\Text;
 
 /**
  * EasyFPUList Model
@@ -47,7 +48,7 @@ class EasyFPUModelNewMeal extends ListModel
             
             return $query;
         } else {
-            Log::add(\JText::_('COM_EASYFPU_ERRMSG_DATALOADING'), Log::ERROR, 'jerror');
+            Log::add(Text::_('COM_EASYFPU_ERRMSG_DATALOADING'), Log::ERROR, 'jerror');
         }
     }
 }

@@ -10,6 +10,9 @@
 // No direct access to this file
 defined('_JEXEC') or die;
 
+// Imports
+use Joomla\CMS\Language\Text;
+
 /**
  * Script file of EasyFPU component.
  *
@@ -51,7 +54,7 @@ class mod_easyFPUInstallerScript
      * @return void
      */
 	function uninstall($parent) {
-	    echo '<p>' . JText::_('COM_EASYFPU_UNINSTALL_TEXT') . '</p>';
+	    echo '<p>' . Text::_('COM_EASYFPU_UNINSTALL_TEXT') . '</p>';
 	}
 
 	/**
@@ -62,7 +65,7 @@ class mod_easyFPUInstallerScript
      * @return void
      */
 	function update($parent) {
-	    echo '<p>' . JText::sprintf('COM_EASYFPU_UPDATE_TEXT', $parent->manifest->version) . '</p>';
+	    echo '<p>' . Text::sprintf('COM_EASYFPU_UPDATE_TEXT', $parent->manifest->version) . '</p>';
 	}
 
 	/**
@@ -78,7 +81,7 @@ class mod_easyFPUInstallerScript
      * @return void
      */
 	function preflight($type, $parent) {
-	    echo '<p>' . JText::_('COM_EASYFPU_PREFLIGHT_' . $type . '_TEXT') . '</p>';
+	    echo '<p>' . Text::_('COM_EASYFPU_PREFLIGHT_' . $type . '_TEXT') . '</p>';
 	}
 
 	/**
@@ -93,6 +96,6 @@ class mod_easyFPUInstallerScript
      * @return void
      */
 	function postflight($type, $parent) {
-	    echo '<p>' . JText::_('COM_EASYFPU_POSTFLIGHT_' . $type . '_TEXT') . '</p>';
+	    echo '<p>' . Text::_('COM_EASYFPU_POSTFLIGHT_' . $type . '_TEXT') . '</p>';
 	}
 }

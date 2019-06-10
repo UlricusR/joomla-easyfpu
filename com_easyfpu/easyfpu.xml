@@ -2,7 +2,7 @@
 <extension type="component" version="3.9" method="upgrade">
 	<name>COM_EASYFPU</name>
 	<creationDate>16.05.2019</creationDate>
-	<version>0.0.17</version>
+	<version>0.0.18</version>
 	<author>Ulrich Rueth</author>
 	<authorEmail>code@rueth.info</authorEmail>
 	<authorUrl>https://rueth.info</authorUrl>
@@ -42,6 +42,7 @@
 		<folder>controllers</folder>
 		<folder>views</folder>
 		<folder>models</folder>
+		<folder>css</folder>
 	</files>
 	
 	<languages folder="site/language">

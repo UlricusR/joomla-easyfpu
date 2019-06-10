@@ -1,0 +1,15 @@
+.easyfpu_calcmeal_header .units {
+	text-align: right;
+}
+
+.easyfpu_calcmeal_totalmeal {
+	font-weight: bolder;
+}
+
+.easyfpu_calcmeal_totalmeal .number {
+	text-align: right;
+}
+
+.easyfpu_calcmeal_fooditem .number {
+	text-align: right;
+}

@@ -102,6 +102,6 @@ class EasyFPUViewEasyFPUs extends HtmlView {
     protected function setDocument()
     {
         $document = Factory::getDocument();
-        $document->setTitle(JText::_('COM_EASYFPU_ADMINISTRATION'));
+        $document->setTitle(Text::_('COM_EASYFPU_ADMINISTRATION'));
     }
 }

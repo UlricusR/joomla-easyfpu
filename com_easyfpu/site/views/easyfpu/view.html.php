@@ -15,6 +15,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\View\HtmlView;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Language\Text;
 
 /**
  * EasyFPU View
@@ -46,7 +47,7 @@ class EasyFPUViewEasyFPU extends HtmlView
         if (!($this->canDo->get('core.create')))
         {
             $app = Factory::getApplication();
-            $app->enqueueMessage(JText::_('JERROR_ALERTNOAUTHOR'), 'error');
+            $app->enqueueMessage(Text::_('JERROR_ALERTNOAUTHOR'), 'error');
             $app->setHeader('status', 403, true);
             return;
         }
@@ -73,11 +74,11 @@ class EasyFPUViewEasyFPU extends HtmlView
     {
         $isNew = ($this->item->id < 1);
         $document = Factory::getDocument();
-        $document->setTitle($isNew ? JText::_('COM_EASYFPU_EASYFPU_CREATING') :
-            JText::_('COM_EASYFPU_EASYFPU_EDITING'));
+        $document->setTitle($isNew ? Text::_('COM_EASYFPU_EASYFPU_CREATING') :
+            Text::_('COM_EASYFPU_EASYFPU_EDITING'));
         $document->addScript(Uri::root() . $this->script);
         $document->addScript(Uri::root() . "/components/com_easyfpu"
             . "/views/easyfpu/submitbutton.js");
-        JText::script('COM_EASYFPU_EASYFPU_ERROR_UNACCEPTABLE');
+        Text::script('COM_EASYFPU_EASYFPU_ERROR_UNACCEPTABLE');
     }
 }

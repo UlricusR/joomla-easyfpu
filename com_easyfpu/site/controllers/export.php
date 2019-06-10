@@ -11,17 +11,23 @@
 defined('_JEXEC') or die;
 
 // Imports
-use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 use Joomla\CMS\Log\Log;
 use Joomla\CMS\Router\Route;
 use Joomla\Utilities\ArrayHelper;
+use Joomla\CMS\MVC\Controller\BaseController;
+use Joomla\CMS\Language\Text;
 
 /**
  * Export Controller
  *
- * @since  0.0.1
+ * @package     Joomla.Site
+ * @subpackage  com_easyfpu
+ *
+ * Used to handle the http POST from the front-end form which allows
+ * users to enter a new easyfpu fooditem
+ *
  */
-class EasyFPUModelCalcMeal extends BaseDatabaseModel
+class EasyFPUControllerExport extends BaseController
 {
     /**
      * Proxy for getModel.
@@ -51,7 +57,7 @@ class EasyFPUModelCalcMeal extends BaseDatabaseModel
         
         if (!is_array($cid) || count($cid) < 1)
         {
-            Log::add(\JText::_('COM_EASYFPU_NO_ITEM_SELECTED'), Log::WARNING, 'jerror');
+            Log::add(Text::_('COM_EASYFPU_NO_ITEM_SELECTED'), Log::WARNING, 'jerror');
             $this->setRedirect(Route::_('index.php?option=com_easyfpu&view=easyfpus'));
         }
         else

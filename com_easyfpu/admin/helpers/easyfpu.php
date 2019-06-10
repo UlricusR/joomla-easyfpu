@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 // Imports
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
 
 /**
  * EasyFPU component helper.
@@ -34,13 +35,13 @@ abstract class EasyFPUHelper extends ContentHelper
     public static function addSubmenu($submenu)
     {
         JHtmlSidebar::addEntry(
-            JText::_('COM_EASYFPU_SUBMENU_FOODITEMS'),
+            Text::_('COM_EASYFPU_SUBMENU_FOODITEMS'),
             'index.php?option=com_easyfpu',
             $submenu == 'easyfpus'
             );
         
         JHtmlSidebar::addEntry(
-            JText::_('COM_EASYFPU_SUBMENU_CATEGORIES'),
+            Text::_('COM_EASYFPU_SUBMENU_CATEGORIES'),
             'index.php?option=com_categories&view=categories&extension=com_easyfpu',
             $submenu == 'categories'
             );
@@ -51,7 +52,7 @@ abstract class EasyFPUHelper extends ContentHelper
             '{background-image: url(../media/com_easyfpu/images/easyfpu-48x48.png);}');
         if ($submenu == 'categories')
         {
-            $document->setTitle(JText::_('COM_EASYFPU_ADMINISTRATION_CATEGORIES'));
+            $document->setTitle(Text::_('COM_EASYFPU_ADMINISTRATION_CATEGORIES'));
         }
     }
 }

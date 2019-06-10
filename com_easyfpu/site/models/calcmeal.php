@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 // Imports
 use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
 
 include_once 'absorptionscheme.php';
 include_once 'absorptionblock.php';
@@ -102,7 +103,7 @@ class EasyFPUModelCalcMeal extends BaseDatabaseModel
         if (isset($this->meal)) {
             return $this->meal;
         } else {
-            $this->meal = new Meal(\JText::_('COM_EASYFPU_MEAL'), $this->getFoodItems());
+            $this->meal = new Meal(Text::_('COM_EASYFPU_MEAL'), $this->getFoodItems());
             return $this->meal;
         }
     }

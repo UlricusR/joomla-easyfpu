@@ -14,6 +14,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Language\Text;
 
 HTMLHelper::_('formbehavior.chosen', 'select');
 
@@ -27,7 +28,7 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
 	<div id="j-main-container" class="span10">
     	<div class="row-fluid">
     		<div class="span12">
-    			<?php echo JText::_('COM_EASYFPU_EASYFPUS_FILTER'); ?>
+    			<?php echo Text::_('COM_EASYFPU_EASYFPUS_FILTER'); ?>
     			<?php
     				echo LayoutHelper::render(
     					'joomla.searchtools.default',
@@ -39,7 +40,7 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
     	<table class="table table-striped table-hover">
     		<thead>
     		<tr>
-    			<th width="1%"><?php echo JText::_('COM_EASYFPU_NUM'); ?></th>
+    			<th width="1%"><?php echo Text::_('COM_EASYFPU_NUM'); ?></th>
     			<th width="2%">
     				<?php echo HTMLHelper::_('grid.checkall'); ?>
     			</th>
@@ -80,11 +81,11 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
     							<?php echo HTMLHelper::_('grid.id', $i, $row->id); ?>
     						</td>
     						<td>
-    							<a href="<?php echo $link; ?>" title="<?php echo JText::_('COM_EASYFPU_EDIT_EASYFPU'); ?>">
+    							<a href="<?php echo $link; ?>" title="<?php echo Text::_('COM_EASYFPU_EDIT_EASYFPU'); ?>">
     								<?php echo $row->name; ?>
     							</a>
     							<div class="small">
-									<?php echo JText::_('JCATEGORY') . ': ' . $this->escape($row->category_title); ?>
+									<?php echo Text::_('JCATEGORY') . ': ' . $this->escape($row->category_title); ?>
 								</div>
     						</td>
     						<td align="center">

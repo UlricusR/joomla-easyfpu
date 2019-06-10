@@ -35,7 +35,7 @@ class EasyFPUViewEasyFPUs extends HtmlView {
         $user = Factory::getUser();
         
         if ($user->guest) {
-            Factory::getApplication()->enqueueMessage(JText::_('COM_EASYFPU_NOTICE_LOGIN'), 'notice');
+            Factory::getApplication()->enqueueMessage(Text::_('COM_EASYFPU_NOTICE_LOGIN'), 'notice');
         } else {
             // Get data from the model
             $this->items            = $this->get('Items');

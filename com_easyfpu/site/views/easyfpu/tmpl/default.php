@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 // Imports
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Language\Text;
 
 HTMLHelper::_('behavior.formvalidator');
 
@@ -22,7 +23,7 @@ HTMLHelper::_('behavior.formvalidator');
 
 	<div class="form-horizontal">
 		<fieldset class="adminform">
-			<legend><?php echo JText::_('COM_EASYFPU_LEGEND_DETAILS') ?></legend>
+			<legend><?php echo Text::_('COM_EASYFPU_LEGEND_DETAILS') ?></legend>
 			<div class="row-fluid">
 				<div class="span6">
 					<?php echo $this->form->renderFieldset('details');  ?>
@@ -34,12 +35,12 @@ HTMLHelper::_('behavior.formvalidator');
 	<div class="btn-toolbar">
 		<div class="btn-group">
 			<button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('easyfpu.save')">
-				<span class="icon-ok"></span><?php echo JText::_('JSAVE') ?>
+				<span class="icon-ok"></span><?php echo Text::_('JSAVE') ?>
 			</button>
 		</div>
 		<div class="btn-group">
 			<button type="button" class="btn" onclick="Joomla.submitbutton('easyfpu.cancel')">
-				<span class="icon-cancel"></span><?php echo JText::_('JCANCEL') ?>
+				<span class="icon-cancel"></span><?php echo Text::_('JCANCEL') ?>
 			</button>
 		</div>
 	</div>

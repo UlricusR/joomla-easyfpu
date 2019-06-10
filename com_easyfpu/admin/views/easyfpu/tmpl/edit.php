@@ -14,6 +14,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Language\Text;
 
 
 HTMLHelper::_('behavior.formvalidator');
@@ -38,9 +39,9 @@ Factory::getDocument()->addScriptDeclaration('
     <div class="form-horizontal">
     	<?php echo HTMLHelper::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
     	<?php echo HTMLHelper::_('bootstrap.addTab', 'myTab', 'details', 
-            empty($this->item->id) ? JText::_('COM_EASYFPU_TAB_NEW_FOODITEM') : JText::_('COM_EASYFPU_TAB_EDIT_FOODITEM')); ?>
+            empty($this->item->id) ? Text::_('COM_EASYFPU_TAB_NEW_FOODITEM') : Text::_('COM_EASYFPU_TAB_EDIT_FOODITEM')); ?>
         	<fieldset class="adminform">
-            	<legend><?php echo JText::_('COM_EASYFPU_LEGEND_DETAILS') ?></legend>
+            	<legend><?php echo Text::_('COM_EASYFPU_LEGEND_DETAILS') ?></legend>
             	<div class="row-fluid">
                 	<div class="span6">
                     	<?php echo $this->form->renderFieldset('details');  ?>
@@ -49,9 +50,9 @@ Factory::getDocument()->addScriptDeclaration('
         	</fieldset>
     	<?php echo HTMLHelper::_('bootstrap.endTab'); ?>
 
-    	<?php echo HTMLHelper::_('bootstrap.addTab', 'myTab', 'params', JText::_('COM_EASYFPU_TAB_PARAMS')); ?>
+    	<?php echo HTMLHelper::_('bootstrap.addTab', 'myTab', 'params', Text::_('COM_EASYFPU_TAB_PARAMS')); ?>
         	<fieldset class="adminform">
-            	<legend><?php echo JText::_('COM_EASYFPU_LEGEND_PARAMS') ?></legend>
+            	<legend><?php echo Text::_('COM_EASYFPU_LEGEND_PARAMS') ?></legend>
             	<div class="row-fluid">
                 	<div class="span6">
                     	<?php echo $this->form->renderFieldset('params');  ?>
@@ -60,9 +61,9 @@ Factory::getDocument()->addScriptDeclaration('
         	</fieldset>
     	<?php echo HTMLHelper::_('bootstrap.endTab'); ?>
 
-    	<?php echo HTMLHelper::_('bootstrap.addTab', 'myTab', 'permissions', JText::_('COM_EASYFPU_TAB_PERMISSIONS')); ?>
+    	<?php echo HTMLHelper::_('bootstrap.addTab', 'myTab', 'permissions', Text::_('COM_EASYFPU_TAB_PERMISSIONS')); ?>
         	<fieldset class="adminform">
-            	<legend><?php echo JText::_('COM_EASYFPU_LEGEND_PERMISSIONS') ?></legend>
+            	<legend><?php echo Text::_('COM_EASYFPU_LEGEND_PERMISSIONS') ?></legend>
             	<div class="row-fluid">
                 	<div class="span12">
                     	<?php echo $this->form->renderFieldset('accesscontrol');  ?>

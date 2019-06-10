@@ -14,6 +14,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Controller\BaseController;
 use Joomla\CMS\Form\Form;
+use Joomla\CMS\Language\Text;
 
 // Set some global property
 $document = Factory::getDocument();
@@ -21,7 +22,7 @@ $document->addStyleDeclaration('.icon-easyfpu {background-image: url(../media/co
 
 // Access check: is this user allowed to access the backend of this component?
 if (!Factory::getUser()->authorise('core.manage', 'com_easyfpu')) {
-    throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'));
+    throw new Exception(Text::_('JERROR_ALERTNOAUTHOR'));
 }
 
 // Require helper file

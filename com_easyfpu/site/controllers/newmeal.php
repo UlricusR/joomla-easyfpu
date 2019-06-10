@@ -15,6 +15,7 @@ use Joomla\CMS\MVC\Controller\AdminController;
 use Joomla\Utilities\ArrayHelper;
 use Joomla\CMS\Log\Log;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Language\Text;
 
 /**
  * EasyFPUs controller
@@ -50,7 +51,7 @@ class EasyFPUControllerNewMeal extends AdminController {
         
         if (!is_array($cid) || count($cid) < 1)
         {
-            Log::add(\JText::_('COM_EASYFPU_NO_ITEM_SELECTED'), Log::WARNING, 'jerror');
+            Log::add(Text::_('COM_EASYFPU_NO_ITEM_SELECTED'), Log::WARNING, 'jerror');
             $this->setRedirect(Route::_('index.php?option=com_easyfpu&view=easyfpus'));
         }
         else

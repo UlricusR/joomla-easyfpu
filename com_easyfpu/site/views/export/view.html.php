@@ -22,10 +22,10 @@ use Joomla\CMS\Application\WebApplication;
  * This is the site view allowing the user to export food items as json file
  *
  */
-class EasyFPUViewCalcMeal extends HtmlView
+class EasyFPUViewExport extends HtmlView
 {
     
-    protected $foodItems = null;
+    protected $jsonFile = null;
     
     /**
      * Display the CalcMeal view
@@ -37,6 +37,7 @@ class EasyFPUViewCalcMeal extends HtmlView
     public function display($tpl = null)
     {
         // TODO Implement
+        $this->jsonFile = $this->get('jsonFile');
         
         // Call the parent display to display the layout file
         parent::display($tpl);
@@ -53,16 +54,7 @@ class EasyFPUViewCalcMeal extends HtmlView
     protected function setDocument()
     {
         $document = Factory::getDocument();
-        $document->setTitle(Text::_('COM_EASYFPU_YOURMEAL'));
+        $document->setTitle(Text::_('COM_EASYFPU_YOURFILE'));
         $document->addScript(Uri::root() . $this->script);
-        $document->addScript(Uri::root() . "/components/com_easyfpu"
-            . "/views/easyfpu/submitbutton.js");
-        JText::script('COM_EASYFPU_EASYFPU_ERROR_UNACCEPTABLE');
-        
-        // Set the MIME type for JSON output.
-        $document->setMimeEncoding('application/json');
-        
-        // Change the suggested filename.
-        WebApplication::getInstance()->setHeader('Content-Disposition','attachment;filename="'.$this->getName().'.json"');
     }
 }
