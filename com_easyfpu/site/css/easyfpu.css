@@ -1,3 +1,9 @@
+.hint {
+	border-style: solid;
+	border-color: blue;
+	background-color: lightblue;
+}
+
 .easyfpu_calcmeal_header .units {
 	text-align: right;
 }

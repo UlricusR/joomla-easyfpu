@@ -22,7 +22,11 @@ $listOrder     = $this->escape($this->state->get('list.ordering'));
 $listDirn      = $this->escape($this->state->get('list.direction'));
 ?>
 <form action="<?php Route::_('index.php?option=com_easyfpu&view=easyfpus'); ?>" method="post" id="adminForm" name="adminForm">
-
+	<!-- The introduction -->
+	<div class="hint">
+		<p><?php echo Text::_('COM_EASYFPU_FOODLIST_USERHELP'); ?></p>
+	</div>
+	
 	<!-- The toolbar -->
 	<div class="btn-toolbar">
 		<div class="btn-group">
