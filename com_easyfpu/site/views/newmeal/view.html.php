@@ -69,6 +69,7 @@ class EasyFPUViewNewMeal extends HtmlView {
     {
         $document = Factory::getDocument();
         $document->setTitle(Text::_('COM_EASYFPU_NEWMEAL'));
+        $document->addStyleSheet(Uri::root() . 'components/com_easyfpu/css/easyfpu.css');
         $document->addScript(Uri::root() . $this->script);
         $document->addScript(Uri::root() . "/administrator/components/com_easyfpu"
             . "/views/easyfpu/submitbutton.js");

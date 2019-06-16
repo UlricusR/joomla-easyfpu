@@ -21,6 +21,12 @@ HTMLHelper::_('behavior.formvalidator');
 <form action="<?php echo Route::_('index.php?option=com_easyfpu&view=easyfpu&layout=edit'); ?>"
     method="post" name="adminForm" id="adminForm" class="form-validate">
 
+	<!-- The introduction -->
+	<div class="hint">
+		<p><?php echo Text::_('COM_EASYFPU_NEWFOOD_USERHELP'); ?></p>
+	</div>
+
+	<!-- The fields -->
 	<div class="form-horizontal">
 		<fieldset class="adminform">
 			<legend><?php echo Text::_('COM_EASYFPU_LEGEND_DETAILS') ?></legend>
@@ -31,7 +37,8 @@ HTMLHelper::_('behavior.formvalidator');
 			</div>
 		</fieldset>
 	</div>
-    
+
+	<!-- The buttons -->    
 	<div class="btn-toolbar">
 		<div class="btn-group">
 			<button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('easyfpu.save')">

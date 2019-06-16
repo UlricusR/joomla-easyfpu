@@ -20,7 +20,11 @@ $ids = array();
 HTMLHelper::_('behavior.formvalidator');
 ?>
 <form action="<?php Route::_('index.php?option=com_easyfpu&view=newmeal'); ?>" method="post" id="adminForm" name="adminForm">
-
+	<!-- The introduction -->
+	<div class="hint">
+		<p><?php echo Text::_('COM_EASYFPU_NEWMEAL_USERHELP'); ?></p>
+	</div>
+	
 	<!-- The toolbar -->
 	<div class="btn-toolbar">
 		<div class="btn-group">

@@ -76,6 +76,7 @@ class EasyFPUViewEasyFPU extends HtmlView
         $document = Factory::getDocument();
         $document->setTitle($isNew ? Text::_('COM_EASYFPU_EASYFPU_CREATING') :
             Text::_('COM_EASYFPU_EASYFPU_EDITING'));
+        $document->addStyleSheet(Uri::root() . 'components/com_easyfpu/css/easyfpu.css');
         $document->addScript(Uri::root() . $this->script);
         $document->addScript(Uri::root() . "/components/com_easyfpu"
             . "/views/easyfpu/submitbutton.js");

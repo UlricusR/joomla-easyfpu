@@ -17,6 +17,11 @@ use Joomla\CMS\Language\Text;
 ?>
 
 <form action="<?php Route::_('index.php?option=com_easyfpu&view=easyfpus'); ?>" method="post" id="adminForm" name="adminForm">
+	<!-- The introduction -->
+	<div class="hint">
+		<p><?php echo Text::_('COM_EASYFPU_CALCMEAL_USERHELP'); ?></p>
+	</div>
+
     <table class="table table-striped table-hover">
     	<thead>
         	<tr>
