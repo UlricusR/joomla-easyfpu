@@ -25,5 +25,5 @@ class JFormRuleNumdecpos extends FormRule
      * @var		string
      * @since	2.5
      */
-    protected $regex = '^\d+$';
+    protected $regex = '^\d*$';
 }
