@@ -91,16 +91,8 @@ class EasyFPUTableEasyFPU extends Table {
         $assetParentId = $assetParent->getRootId();
         
         // Find the parent-asset
-        if (($this->catid)&& !empty($this->catid))
-        {
-            // The item has a category as asset-parent
-            $assetParent->loadByName('com_easyfpu.category.' . (int) $this->catid);
-        }
-        else
-        {
-            // The item has the component as asset-parent
-            $assetParent->loadByName('com_easyfpu');
-        }
+        // The item has the component as asset-parent
+        $assetParent->loadByName('com_easyfpu');
         
         // Return the found asset-parent-id
         if ($assetParent->id)

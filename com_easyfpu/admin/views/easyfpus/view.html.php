@@ -46,9 +46,6 @@ class EasyFPUViewEasyFPUs extends HtmlView {
             throw new Exception(implode("\n", $errors), 500);
         }
         
-        // Set the submenu
-        EasyFPUHelper::addSubmenu('easyfpus');
-        
         // Set the toolbar and number of found items
         $this->addToolBar();
         

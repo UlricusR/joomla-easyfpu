@@ -25,9 +25,6 @@ if (!Factory::getUser()->authorise('core.manage', 'com_easyfpu')) {
     throw new Exception(Text::_('JERROR_ALERTNOAUTHOR'));
 }
 
-// Require helper file
-JLoader::register('EasyFPUHelper', JPATH_COMPONENT . '/helpers/easyfpu.php');
-
 // Add rule path
 Form::addRulePath('administrator/components/com_easyfpu/models/rules');
 

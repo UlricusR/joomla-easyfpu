@@ -38,9 +38,8 @@ class JFormFieldEasyFPU extends JFormFieldList {
     protected function getOptions() {
         $db = Factory::getDbo();
         $query = $db->getQuery(true);
-        $query->select('#__easyfpu.id as id,name,#__categories.title as category,catid');
+        $query->select('#__easyfpu.id as id,name');
         $query->from('#__easyfpu');
-        $query->leftJoin('#__categories on catid=#__categories.id');
         // Retrieve only published items
         $query->where('#__easyfpu.published = 1');
         $db->setQuery((string) $query);
@@ -49,8 +48,7 @@ class JFormFieldEasyFPU extends JFormFieldList {
         
         if ($fooditems) {
             foreach ($fooditems as $fooditem) {
-                $options[] = HTMLHelper::_('select.option', $fooditem->id, $fooditem->name .
-                    ($fooditem->catid ? ' (' . $fooditem->category . ')' : ''));
+                $options[] = HTMLHelper::_('select.option', $fooditem->id, $fooditem->name);
             }
         }
         

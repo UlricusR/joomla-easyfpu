@@ -16,7 +16,6 @@ CREATE TABLE `#__easyfpu` (
 	`comment_medium` VARCHAR(100) NOT NULL,
 	`comment_large` VARCHAR(100) NOT NULL,
 	`published` tinyint(4) NOT NULL DEFAULT '1',
-	`catid` 	int(11)	   NOT NULL DEFAULT '0',
 	`params`   VARCHAR(1024) NOT NULL DEFAULT '',
 	PRIMARY KEY (`id`)
 )

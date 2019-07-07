@@ -22,9 +22,6 @@ $listOrder     = $this->escape($this->state->get('list.ordering'));
 $listDirn      = $this->escape($this->state->get('list.direction'));
 ?>
 <form action="<?php Route::_('index.php?option=com_easyfpu&view=easyfpus'); ?>" method="post" id="adminForm" name="adminForm">
-	<div id="j-sidebar-container" class="span2">
-		<?php echo JHtmlSidebar::render(); ?>
-	</div>
 	<div id="j-main-container" class="span10">
     	<div class="row-fluid">
     		<div class="span12">
@@ -84,9 +81,6 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
     							<a href="<?php echo $link; ?>" title="<?php echo Text::_('COM_EASYFPU_EDIT_EASYFPU'); ?>">
     								<?php echo $row->name; ?>
     							</a>
-    							<div class="small">
-									<?php echo Text::_('JCATEGORY') . ': ' . $this->escape($row->category_title); ?>
-								</div>
     						</td>
     						<td align="center">
                                 <?php echo $row->author; ?>

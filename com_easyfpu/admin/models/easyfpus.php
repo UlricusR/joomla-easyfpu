@@ -70,10 +70,6 @@ class EasyFPUModelEasyFPUs extends ListModel {
                         a.published as published, a.created as created')
             ->from($db->quoteName('#__easyfpu', 'a'));
         
-        // Join over categories
-        $query->select($db->quoteName('c.title', 'category_title'))
-              ->join('LEFT', $db->quoteName('#__categories', 'c') . ' ON c.id = a.catid');
-        
         // Join with users table to get the username of the author
         $query->select($db->quoteName('u.username', 'author'))
               ->join('LEFT', $db->quoteName('#__users', 'u') . ' ON u.id = a.created_by');
