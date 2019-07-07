@@ -29,11 +29,9 @@ class JFormRuleCarbs extends FormRule
             return false;
         }
         
-        var_dump($form);
-
         // Check if calories from carbs do not exceed total calories (1g carbs has 4 kcal)
         $caloriesFromCarbs = $value * 4;
-        $totalCalories = $form->getValue('calories');
+        $totalCalories = $input->get('calories', 0);
         
         if ($caloriesFromCarbs > $totalCalories) {
             $element->attributes()->message = Text::_('COM_EASYFPU_EASYFPU_ERRMSG_TOOMUCHCARBS');
