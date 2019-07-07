@@ -15,7 +15,6 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\View\HtmlView;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
-use Joomla\CMS\Application\WebApplication;
 
 /**
  * Export View
@@ -36,7 +35,6 @@ class EasyFPUViewExport extends HtmlView
      */
     public function display($tpl = null)
     {
-        // TODO Implement
         $this->jsonFile = $this->get('jsonFile');
         
         // Call the parent display to display the layout file
