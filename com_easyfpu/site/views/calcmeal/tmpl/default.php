@@ -22,7 +22,7 @@ use Joomla\CMS\Language\Text;
 		<p><?php echo Text::_('COM_EASYFPU_CALCMEAL_USERHELP'); ?></p>
 	</div>
 
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover desktop">
     	<thead>
         	<tr>
         		<th><?php echo Text::_('COM_EASYFPU_EASYFPU_NAME_LABEL'); ?></th>
@@ -62,6 +62,35 @@ use Joomla\CMS\Language\Text;
         		<td class="number"><?php echo number_format($fooditem->getFPU(), $this->numberDecimals, $this->decimalSeparator, $this->thousandsDelimiter); ?></td>
         		<td class="number"><?php echo number_format($fooditem->getExtendedCarbs(), $this->numberDecimals, $this->decimalSeparator, $this->thousandsDelimiter); ?></td>
         		<td class="number"><?php echo $this->absorptionScheme->getAbsorptionTime($fooditem->getFPU()); ?></td>
+        	</tr>
+        	<?php } ?>
+    	</tbody>
+    </table>
+
+    <table class="table table-striped table-hover mobile">
+    	<tbody>
+        	<tr class="easyfpu_calcmeal_totalmeal">
+        		<td>
+        			<?php echo Text::_('COM_EASYFPU_EASYFPU_NAME_LABEL'); ?>: <?php echo $this->meal->getName(); ?><br/>
+        			<?php echo Text::_('COM_EASYFPU_AMOUNT'); ?>: <?php echo $this->meal->getAmount(); ?>&nbsp;<?php echo Text::_('COM_EASYFPU_UNIT_GRAMS'); ?><br/>
+        			<?php echo Text::_('COM_EASYFPU_CALORIES'); ?>: <?php echo number_format($this->meal->getCalories(), $this->numberDecimals, $this->decimalSeparator, $this->thousandsDelimiter); ?>&nbsp;<?php echo Text::_('COM_EASYFPU_UNIT_KCAL'); ?><br/>
+        			<?php echo Text::_('COM_EASYFPU_CARBS'); ?>: <?php echo number_format($this->meal->getCarbs(), $this->numberDecimals, $this->decimalSeparator, $this->thousandsDelimiter); ?>&nbsp;<?php echo Text::_('COM_EASYFPU_UNIT_GRAMS'); ?><br/>
+        			<?php echo Text::_('COM_EASYFPU_FPU'); ?>: <?php echo number_format($this->meal->getFPU(), $this->numberDecimals, $this->decimalSeparator, $this->thousandsDelimiter); ?><br/>
+        			<?php echo Text::_('COM_EASYFPU_EXTENDED_CARBS'); ?>: <?php echo number_format($this->meal->getExtendedCarbs(), $this->numberDecimals, $this->decimalSeparator, $this->thousandsDelimiter); ?>&nbsp;<?php echo Text::_('COM_EASYFPU_UNIT_GRAMS'); ?><br/>
+        			<?php echo Text::_('COM_EASYFPU_ABSORPTION_TIME'); ?>: <?php echo $this->absorptionScheme->getAbsorptionTime($this->meal->getFPU()); ?>&nbsp;<?php echo Text::_('COM_EASYFPU_UNIT_HOURS'); ?>
+        		</td>
+        	</tr>
+        	<?php foreach ($this->foodItems as $fooditem) { ?>
+        	<tr class="easyfpu_calcmeal_fooditem">
+        		<td>
+        			<?php echo Text::_('COM_EASYFPU_EASYFPU_NAME_LABEL'); ?>: <?php echo $fooditem->getName(); ?><br/>
+        			<?php echo Text::_('COM_EASYFPU_AMOUNT'); ?>: <?php echo $fooditem->getAmount(); ?>&nbsp;<?php echo Text::_('COM_EASYFPU_UNIT_GRAMS'); ?><br/>
+        			<?php echo Text::_('COM_EASYFPU_CALORIES'); ?>: <?php echo number_format($fooditem->getCalories(), $this->numberDecimals, $this->decimalSeparator, $this->thousandsDelimiter); ?>&nbsp;<?php echo Text::_('COM_EASYFPU_UNIT_KCAL'); ?><br/>
+        			<?php echo Text::_('COM_EASYFPU_CARBS'); ?>: <?php echo number_format($fooditem->getCarbs(), $this->numberDecimals, $this->decimalSeparator, $this->thousandsDelimiter); ?>&nbsp;<?php echo Text::_('COM_EASYFPU_UNIT_GRAMS'); ?><br/>
+        			<?php echo Text::_('COM_EASYFPU_FPU'); ?>: <?php echo number_format($fooditem->getFPU(), $this->numberDecimals, $this->decimalSeparator, $this->thousandsDelimiter); ?><br/>
+        			<?php echo Text::_('COM_EASYFPU_EXTENDED_CARBS'); ?>: <?php echo number_format($fooditem->getExtendedCarbs(), $this->numberDecimals, $this->decimalSeparator, $this->thousandsDelimiter); ?>&nbsp;<?php echo Text::_('COM_EASYFPU_UNIT_GRAMS'); ?><br/>
+        			<?php echo Text::_('COM_EASYFPU_ABSORPTION_TIME'); ?>: <?php echo $this->absorptionScheme->getAbsorptionTime($fooditem->getFPU()); ?>&nbsp;<?php echo Text::_('COM_EASYFPU_UNIT_HOURS'); ?>
+        		</td>
         	</tr>
         	<?php } ?>
     	</tbody>

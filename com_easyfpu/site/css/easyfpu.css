@@ -19,3 +19,15 @@
 .easyfpu_calcmeal_fooditem .number {
 	text-align: right;
 }
+
+@media (max-width: 480px) {
+    .desktop {
+        display: none;
+    }
+}
+
+@media (min-width: 481px) {
+    .mobile {
+        display: none;
+    }
+}

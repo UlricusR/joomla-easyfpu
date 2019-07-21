@@ -2,7 +2,7 @@
 <extension type="component" version="3.9" method="upgrade">
 	<name>COM_EASYFPU</name>
 	<creationDate>16.05.2019</creationDate>
-	<version>1.0.1</version>
+	<version>1.1.0</version>
 	<author>Ulrich Rueth</author>
 	<authorEmail>code@rueth.info</authorEmail>
 	<authorUrl>https://rueth.info</authorUrl>
