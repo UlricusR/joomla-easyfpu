@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="3.9" method="upgrade">
+<extension type="component" version="4.0" method="upgrade">
 	<name>COM_EASYFPU</name>
 	<creationDate>16.05.2019</creationDate>
-	<version>1.1.0</version>
+	<version>2.0.0</version>
 	<author>Ulrich Rueth</author>
 	<authorEmail>code@rueth.info</authorEmail>
 	<authorUrl>https://rueth.info</authorUrl>
@@ -11,6 +11,7 @@
 		(https://github.com/UlricusR/joomla-eventlist/blob/master/LICENSE) license.
 	</license>
 	<description>COM_EASYFPU_DESC</description>
+	<namespace>RuethInfo\Component\EasyFPU</namespace>
 	
 	<!-- Runs on install/uninstall/update; New in 2.5 -->
 	<scriptfile>script.php</scriptfile>
@@ -39,9 +40,10 @@
 		<filename>easyfpu.php</filename>
 		<filename>index.html</filename>
 		<filename>controller.php</filename>
-		<folder>controllers</folder>
-		<folder>views</folder>
-		<folder>models</folder>
+		<folder>Controller</folder>
+		<folder>View</folder>
+		<folder>Model</folder>
+		<folder>Table</folder>
 		<folder>css</folder>
 	</files>
 	
@@ -72,13 +74,13 @@
 			<!-- SQL files section -->
 			<folder>sql</folder>
 			<!-- tables files section -->
-			<folder>tables</folder>
+			<folder>Table</folder>
 			<!-- models files section -->
-			<folder>models</folder>
+			<folder>Model</folder>
 			<!-- views files section -->
-			<folder>views</folder>
+			<folder>View</folder>
 			<!-- controllers files section -->
-			<folder>controllers</folder>
+			<folder>Controller</folder>
 		</files>
 		<languages folder="admin/language">
 			<language tag="en-GB">en-GB/en-GB.com_easyfpu.ini</language>
