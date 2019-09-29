@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="4.0" method="upgrade">
+<extension type="component" version="3.9" method="upgrade">
 	<name>COM_EASYFPU</name>
 	<creationDate>16.05.2019</creationDate>
 	<version>2.0.0</version>
@@ -37,14 +37,14 @@
 		to copy FROM in the package to install therefore files copied
 		in this section are copied from /site/ in the package -->
 	<files folder="site">
-		<filename>easyfpu.php</filename>
 		<filename>index.html</filename>
-		<filename>controller.php</filename>
 		<folder>Controller</folder>
-		<folder>View</folder>
+		<folder>css</folder>
+		<folder>forms</folder>
 		<folder>Model</folder>
 		<folder>Table</folder>
-		<folder>css</folder>
+		<folder>tmpl</folder>
+		<folder>View</folder>
 	</files>
 	
 	<languages folder="site/language">
@@ -66,21 +66,20 @@
 			in this section are copied from /admin/ in the package -->
 		<files folder="admin">
 			<!-- Admin Main File Copy Section -->
-			<filename>index.html</filename>
-			<filename>config.xml</filename>
-			<filename>easyfpu.php</filename>
-			<filename>controller.php</filename>
 			<filename>access.xml</filename>
-			<!-- SQL files section -->
-			<folder>sql</folder>
-			<!-- tables files section -->
-			<folder>Table</folder>
-			<!-- models files section -->
-			<folder>Model</folder>
-			<!-- views files section -->
-			<folder>View</folder>
-			<!-- controllers files section -->
+			<filename>config.xml</filename>
+			<filename>index.html</filename>
 			<folder>Controller</folder>
+			<folder>Extension</folder>
+			<folder>Field</folder>
+			<folder>forms</folder>
+			<folder>Model</folder>
+			<folder>Rule</folder>
+			<folder>services</folder>
+			<folder>sql</folder>
+			<folder>Table</folder>
+			<folder>tmpl</folder>
+			<folder>View</folder>
 		</files>
 		<languages folder="admin/language">
 			<language tag="en-GB">en-GB/en-GB.com_easyfpu.ini</language>
