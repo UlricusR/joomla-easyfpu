@@ -13,24 +13,18 @@ namespace RuethInfo\Component\Easyfpu\Site\Controller;
 defined('_JEXEC') or die;
 
 // Imports
+use Joomla\CMS\MVC\Controller\AdminController;
+use Joomla\Utilities\ArrayHelper;
 use Joomla\CMS\Log\Log;
 use Joomla\CMS\Router\Route;
-use Joomla\Utilities\ArrayHelper;
-use Joomla\CMS\MVC\Controller\BaseController;
 use Joomla\CMS\Language\Text;
 
 /**
- * Export Controller
+ * Easyfpus controller
  *
- * @package     Joomla.Site
- * @subpackage  com_easyfpu
- *
- * Used to handle the http POST from the front-end form which allows
- * users to enter a new easyfpu fooditem
- *
+ * @since 0.0.1
  */
-class ExportController extends BaseController
-{
+class NewmealController extends AdminController {
     /**
      * Proxy for getModel.
      *
@@ -42,14 +36,14 @@ class ExportController extends BaseController
      *
      * @since   1.6
      */
-    public function getModel($name = 'Export', $prefix = 'Site', $config = array('ignore_request' => true))
+    public function getModel($name = 'NewMeal', $prefix = 'Site', $config = array('ignore_request' => true))
     {
         $model = parent::getModel($name, $prefix, $config);
         
         return $model;
     }
     
-    public function export()
+    public function newmeal($key = null)
     {
         // Check for request forgeries
         $this->checkToken();
@@ -67,8 +61,8 @@ class ExportController extends BaseController
             // Make sure the item ids are integers
             $cid = ArrayHelper::toInteger($cid);
             
-            if ($view = $this->getView('Export', 'html', 'Site')) {
-                // Set to export model
+            if ($view = $this->getView('NewMeal', 'html', 'Site')) {
+                // Set to newmeal model
                 $model = $this->getModel();
                 $model->setState('ids', $cid);
                 $view->setModel($model, true);

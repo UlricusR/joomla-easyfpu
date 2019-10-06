@@ -21,11 +21,11 @@ use Joomla\CMS\Extension\Service\Provider\RouterFactory;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
-use RuethInfo\Component\EasyFPU\Administrator\Extension\EasyFPUComponent;
+use RuethInfo\Component\Easyfpu\Administrator\Extension\EasyfpuComponent;
 use Joomla\CMS\HTML\Registry;
 
 /**
- * The EasyFPU service provider.
+ * The Easyfpu service provider.
  *
  * @since  4.0.0
  */
@@ -42,15 +42,15 @@ return new class implements ServiceProviderInterface
      */
     public function register(Container $container)
     {
-        $container->registerServiceProvider(new CategoryFactory('\\RuethInfo\\Component\\EasyFPU'));
-        $container->registerServiceProvider(new MVCFactory('\\RuethInfo\\Component\\EasyFPU'));
-        $container->registerServiceProvider(new ComponentDispatcherFactory('\\RuethInfo\\Component\\EasyFPU'));
-        $container->registerServiceProvider(new RouterFactory('\\RuethInfo\\Component\\EasyFPU'));
+        $container->registerServiceProvider(new CategoryFactory('\\RuethInfo\\Component\\Easyfpu'));
+        $container->registerServiceProvider(new MVCFactory('\\RuethInfo\\Component\\Easyfpu'));
+        $container->registerServiceProvider(new ComponentDispatcherFactory('\\RuethInfo\\Component\\Easyfpu'));
+        $container->registerServiceProvider(new RouterFactory('\\RuethInfo\\Component\\Easyfpu'));
         $container->set(
             ComponentInterface::class,
             function (Container $container)
             {
-                $component = new EasyFPUComponent($container->get(ComponentDispatcherFactoryInterface::class));
+                $component = new EasyfpuComponent($container->get(ComponentDispatcherFactoryInterface::class));
                 
                 $component->setRegistry($container->get(Registry::class));
                 $component->setMVCFactory($container->get(MVCFactoryInterface::class));

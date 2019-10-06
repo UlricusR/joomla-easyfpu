@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 3 or later
  */
 
-namespace RuethInfo\Component\EasyFPU\Site\Model;
+namespace RuethInfo\Component\Easyfpu\Site\Model;
 
 // No direct access
 defined('_JEXEC') or die;

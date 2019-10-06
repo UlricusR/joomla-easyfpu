@@ -7,7 +7,7 @@
  * @license     GNU General Public License version 3 or later
  */
 
-namespace RuethInfo\Component\EasyFPU\Administrator\Rule;
+namespace RuethInfo\Component\Easyfpu\Administrator\Rule;
 
 // No direct access
 defined('_JEXEC') or die;

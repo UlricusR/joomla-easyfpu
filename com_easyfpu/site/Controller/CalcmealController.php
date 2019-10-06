@@ -12,15 +12,14 @@ namespace RuethInfo\Component\Easyfpu\Site\Controller;
 // No direct access
 defined('_JEXEC') or die;
 
+// TODO Adapt!
+
 // Imports
-use Joomla\CMS\Log\Log;
-use Joomla\CMS\Router\Route;
 use Joomla\Utilities\ArrayHelper;
 use Joomla\CMS\MVC\Controller\BaseController;
-use Joomla\CMS\Language\Text;
 
 /**
- * Export Controller
+ * CalcMeal Controller
  *
  * @package     Joomla.Site
  * @subpackage  com_easyfpu
@@ -29,7 +28,7 @@ use Joomla\CMS\Language\Text;
  * users to enter a new easyfpu fooditem
  *
  */
-class ExportController extends BaseController
+class CalcmealController extends BaseController
 {
     /**
      * Proxy for getModel.
@@ -42,40 +41,39 @@ class ExportController extends BaseController
      *
      * @since   1.6
      */
-    public function getModel($name = 'Export', $prefix = 'Site', $config = array('ignore_request' => true))
+    public function getModel($name = 'CalcMeal', $prefix = 'Site', $config = array('ignore_request' => true))
     {
         $model = parent::getModel($name, $prefix, $config);
         
         return $model;
     }
     
-    public function export()
+    public function calcmeal($key = null)
     {
         // Check for request forgeries
         $this->checkToken();
         
-        // Get items to use for new meal
-        $cid = $this->input->get('cid', array(), 'array');
+        // Get items to from the request
+        $ids = explode(',', $this->input->getString('ids'));
         
-        if (!is_array($cid) || count($cid) < 1)
-        {
-            Log::add(Text::_('COM_EASYFPU_NO_ITEM_SELECTED'), Log::WARNING, 'jerror');
-            $this->setRedirect(Route::_('index.php?option=com_easyfpu&view=easyfpus'));
+        // Make sure they are integers
+        $ids = ArrayHelper::toInteger($ids);
+        
+        // Retrieve amounts
+        $amounts = array();
+        foreach ($ids as $id) {
+            $amount = $this->input->getInteger('amount' . $id);
+            $amounts[$id] = $amount;
         }
-        else
-        {
-            // Make sure the item ids are integers
-            $cid = ArrayHelper::toInteger($cid);
+        
+        if ($view = $this->getView('CalcMeal', 'html', 'Site')) {    
+            // Set to calcmeal model
+            $model = $this->getModel();
+            $model->setState('amounts', $amounts);
+            $view->setModel($model, true);
             
-            if ($view = $this->getView('Export', 'html', 'Site')) {
-                // Set to export model
-                $model = $this->getModel();
-                $model->setState('ids', $cid);
-                $view->setModel($model, true);
-                
-                // Call view
-                $view->display();
-            }
+            // Call view
+            $view->display();
         }
     }
 }

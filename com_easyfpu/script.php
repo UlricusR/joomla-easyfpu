@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Language\Text;
 
 /**
- * Script file of EasyFPU component.
+ * Script file of EasyFPE component.
  *
  * The name of this class is dependent on the component being installed.
  * The class name should have the component's name, directly followed by
@@ -33,7 +33,7 @@ use Joomla\CMS\Language\Text;
  * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
-class mod_easyFPUInstallerScript
+class mod_easyfpuInstallerScript
 {
 	/**
      * This method is called after a component is installed.
