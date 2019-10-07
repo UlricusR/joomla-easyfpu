@@ -82,7 +82,7 @@ class HtmlView extends BaseHtmlView
         $document->addStyleSheet(Uri::root() . 'components/com_easyfpu/css/easyfpu.css');
         $document->addScript(Uri::root() . $this->script);
         $document->addScript(Uri::root() . "/components/com_easyfpu"
-            . "/View/easyfpu/submitbutton.js");
+            . "/View/Easyfpu/submitbutton.js");
         Text::script('COM_EASYFPU_EASYFPU_ERROR_UNACCEPTABLE');
     }
 }
