@@ -45,7 +45,8 @@ class HtmlView extends BaseHtmlView
         // Get the Data
         $this->form = $this->get('Form');
         $this->item = $this->get('Item');
-        $this->script = $this->get('Script');
+        $this->validationScript = $this->get('ValidationScript');
+        $this->submitButtonScript = $this->get('SubmitButtonScript');
         
         // What Access Permissions does this user have? What can (s)he do?
         $this->canDo = ContentHelper::getActions('com_easyfpu', 'easyfpu', $this->item->id);
@@ -127,9 +128,8 @@ class HtmlView extends BaseHtmlView
         $document = Factory::getDocument();
         $document->setTitle($isNew ? Text::_('COM_EASYFPU_EASYFPU_CREATING') :
             Text::_('COM_EASYFPU_EASYFPU_EDITING'));
-        $document->addScript(Uri::root() . $this->script);
-        $document->addScript(Uri::root() . "/administrator/components/com_easyfpu"
-            . "/View/Easyfpu/submitbutton.js");
+        $document->addScript(Uri::root() . $this->validationScript);
+        $document->addScript(Uri::root() . $this->submitButtonScript);
         Text::script('COM_EASYFPU_EASYFPU_ERROR_UNACCEPTABLE');
     }
 }

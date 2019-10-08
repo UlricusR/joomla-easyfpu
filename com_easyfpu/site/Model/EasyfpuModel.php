@@ -78,13 +78,23 @@ class EasyfpuModel extends AdminModel
     }
     
     /**
-     * Method to get the script that have to be included on the form
+     * Method to get the validation script that have to be included on the form
      *
      * @return string	Script files
      */
-    public function getScript()
+    public function getValidationScript()
     {
-        return 'components/com_easyfpu/Model/forms/easyfpu.js';
+        return 'administrator/components/com_easyfpu/forms/easyfpu.js';
+    }
+    
+    /**
+     * Method to get the submit button script that have to be included on the form
+     *
+     * @return string	Script files
+     */
+    public function getSubmitButtonScript()
+    {
+        return 'administrator/components/com_easyfpu/View/Easyfpu/submitbutton.js';
     }
     
     /**
