@@ -42,7 +42,7 @@ class CalcmealModel extends BaseDatabaseModel
         parent::__construct($config);
         
         // Load absorption scheme
-        $path = JPATH_BASE . '/components/com_easyfpu/models/absorptionscheme_default.json';
+        $path = JPATH_BASE . '/components/com_easyfpu/Model/absorptionscheme_default.json';
         $json = file_get_contents($path);
         $absorptionScheme = json_decode($json);
         $absorptionBlocks = array();

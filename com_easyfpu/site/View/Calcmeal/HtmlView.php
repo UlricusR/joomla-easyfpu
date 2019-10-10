@@ -76,7 +76,6 @@ class HtmlView extends BaseHtmlView
     {
         $document = Factory::getDocument();
         $document->setTitle(Text::_('COM_EASYFPU_YOURMEAL'));
-        $document->addScript(Uri::root() . $this->script);
         $document->addStyleSheet(Uri::root() . 'components/com_easyfpu/css/easyfpu.css');
     }
 }
