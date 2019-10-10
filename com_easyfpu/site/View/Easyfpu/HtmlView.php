@@ -30,6 +30,7 @@ class HtmlView extends BaseHtmlView
     
     protected $form = null;
     protected $canDo;
+    protected $item = null;
     
     /**
      * Display the Easyfpu view
@@ -43,7 +44,10 @@ class HtmlView extends BaseHtmlView
         // Get the form to display
         $this->form = $this->get('Form');
         // Get the javascript script file for client-side validation
-        $this->script = $this->get('Script');
+        $this->validationScript = $this->get('ValidationScript');
+        $this->submitButtonScript = $this->get('SubmitButtonScript');
+        // Get the item to edit
+        $this->item = $this->get('Item');
         
         // Check that the user has permissions to create a new easyfpu record
         $this->canDo = ContentHelper::getActions('com_easyfpu');
@@ -75,14 +79,13 @@ class HtmlView extends BaseHtmlView
      */
     protected function setDocument()
     {
-        $isNew = ($this->item->id < 1);
+        $isNew = (isset($this->item) ? $this->item->id < 1 : false);
         $document = Factory::getDocument();
         $document->setTitle($isNew ? Text::_('COM_EASYFPU_EASYFPU_CREATING') :
             Text::_('COM_EASYFPU_EASYFPU_EDITING'));
         $document->addStyleSheet(Uri::root() . 'components/com_easyfpu/css/easyfpu.css');
-        $document->addScript(Uri::root() . $this->script);
-        $document->addScript(Uri::root() . "/components/com_easyfpu"
-            . "/View/Easyfpu/submitbutton.js");
+        $document->addScript(Uri::root() . $this->validationScript);
+        $document->addScript(Uri::root() . $this->submitButtonScript);
         Text::script('COM_EASYFPU_EASYFPU_ERROR_UNACCEPTABLE');
     }
 }
