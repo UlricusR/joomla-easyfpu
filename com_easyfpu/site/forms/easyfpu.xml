@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<form addrulepath="/administrator/components/com_easyfpu/models/rules">
+<form addruleprefix="RuethInfo\Component\Easyfpu\Administrator\Rule">
     <fieldset
 		name="details"
 		label="COM_EASYFPU_EASYFPU_DETAILS"
