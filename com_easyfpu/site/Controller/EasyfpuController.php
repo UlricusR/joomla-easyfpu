@@ -150,8 +150,7 @@ class EasyfpuController extends FormController
             $app->setUserState($context . '.data', $validData);
             
             // Redirect back to the edit screen.
-            $this->setError(Text::sprintf('JLIB_APPLICATION_ERROR_SAVE_FAILED', $model->getError()));
-            $this->setMessage($this->getError(), 'error');
+            $this->setMessage($model->getError(), 'error');
             
             $this->setRedirect($currentUri);
             
