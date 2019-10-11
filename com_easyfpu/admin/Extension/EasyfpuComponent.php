@@ -17,16 +17,16 @@ use Joomla\CMS\Component\Router\RouterServiceTrait;
 use Joomla\CMS\Extension\BootableExtensionInterface;
 use Joomla\CMS\Extension\MVCComponent;
 use Joomla\CMS\HTML\HTMLRegistryAwareTrait;
+use RuethInfo\Component\Easyfpu\Administrator\Service\HTML\AdministratorService;
 use Psr\Container\ContainerInterface;
 
 /**
  * Component class for com_easyfpu
  *
- * @since  4.0.0
+ * @since  1.0.0
  */
-class EasyfpuComponent extends MVCComponent implements BootableExtensionInterface, RouterServiceInterface
+class EasyfpuComponent extends MVCComponent implements BootableExtensionInterface
 {
-	use RouterServiceTrait;
 	use HTMLRegistryAwareTrait;
 
 	/**
@@ -44,6 +44,6 @@ class EasyfpuComponent extends MVCComponent implements BootableExtensionInterfac
 	 */
 	public function boot(ContainerInterface $container)
 	{
-		// $this->getRegistry()->register('easyfpuadministrator', new AdministratorService);
+		$this->getRegistry()->register('easyfpuadministrator', new AdministratorService);
 	}
 }
