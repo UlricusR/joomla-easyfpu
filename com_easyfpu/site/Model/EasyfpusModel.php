@@ -44,6 +44,23 @@ class EasyfpusModel extends ListModel
         parent::__construct($config);
     }
     
+    protected function populateState($ordering = 'name', $direction = 'asc')
+    {
+        $search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
+        $this->setState('filter.search', $search);
+        
+        // List state information.
+        parent::populateState($ordering, $direction);
+    }
+    
+    protected function getStoreId($id = '')
+    {
+        // Compile the store id.
+        $id .= ':' . $this->getState('filter.search');
+        
+        return parent::getStoreId($id);
+    }
+    
     /**
      * Method to build an SQL query to load the list data.
      *
@@ -52,16 +69,16 @@ class EasyfpusModel extends ListModel
     protected function getListQuery()
     {
         // Initialize variables
-        $db    = Factory::getDbo();
+        $db    = $this->getDbo();
         $query = $db->getQuery(true);
         
         // Make sure the user is logged in in your view.html.php!
         $user = Factory::getUser();
-
+        
         // Create the base select statement.
         $query->select('*')
-            ->from($db->quoteName('#__easyfpu'))
-            ->where('created_by = ' . $user->id);
+        ->from($db->quoteName('#__easyfpu'))
+        ->where('created_by = ' . $user->id);
         
         // Filter: like / search
         $search = $this->getState('filter.search');
