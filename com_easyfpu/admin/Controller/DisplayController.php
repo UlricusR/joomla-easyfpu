@@ -28,7 +28,7 @@ class DisplayController extends BaseController
      * The default view.
      *
      * @var    string
-     * @since  1.6
+     * @since  2.0.0
      */
     protected $default_view = 'easyfpus';
     
@@ -40,7 +40,9 @@ class DisplayController extends BaseController
      *
      * @return  static  This object to support chaining.
      *
-     * @since   1.5
+     * @since   2.0.0
+     * 
+     * @throws \Exception
      */
     public function display($cachable = false, $urlparams = array())
     {
